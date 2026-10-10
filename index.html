@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nguyen Quoc An · Finance × Data</title>
+  <meta name="description" content="Portfolio of Nguyen Quoc An (An Nguyen): finance and data analytics skills, each connected to the projects, roles and certifications that prove it.">
+  <meta property="og:title" content="Nguyen Quoc An · Finance × Data">
+  <meta property="og:description" content="A capability map of finance and data skills, each backed by evidence.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#252936">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <!-- Hero (filled from data.js) -->
+    <section class="hero container" aria-labelledby="hero-name">
+      <div class="hero__grid">
+        <div>
+          <p class="kicker">Portfolio</p>
+          <h1 id="hero-name"></h1>
+          <p class="hero__tag" id="hero-tag"></p>
+          <p class="hero__intro" id="hero-intro"></p>
+          <div class="hero__actions" id="hero-actions"></div>
+          <ul class="stats" id="hero-stats" aria-label="At a glance"></ul>
+        </div>
+        <aside class="status-card" id="status-card" aria-label="Current status"></aside>
+      </div>
+    </section>
+
+    <div class="container"><hr class="divider"></div>
+
+    <!-- Capability map -->
+    <section class="map-section container" id="map" aria-labelledby="map-title">
+      <h2 class="section-title" id="map-title">Capability map</h2>
+      <p class="section-sub">Select a skill to explore the evidence behind it.</p>
+
+      <div class="map-controls">
+        <fieldset class="view-control">
+          <legend>View</legend>
+          <div class="opts" id="view-opts"></div>
+        </fieldset>
+        <ul class="legend" aria-label="Legend">
+          <li><span class="lg lg--learning" aria-hidden="true"></span>Learning</li>
+          <li><span class="lg" aria-hidden="true"></span>Applied</li>
+          <li><span class="lg lg--proven" aria-hidden="true"></span>Proven</li>
+          <li><span class="lg lg--path" aria-hidden="true"></span>Selected path</li>
+          <li><span class="lg lg--badge" aria-hidden="true">4</span>Evidence items</li>
+        </ul>
+      </div>
+
+      <div class="map-desktop" id="map-desktop">
+        <svg class="map-trunk" id="map-trunk" aria-hidden="true"></svg>
+        <div class="map-root" id="map-root"></div>
+        <div class="branches" id="branches"></div>
+      </div>
+      <div class="map-mobile" id="map-mobile"></div>
+      <noscript><p class="empty">The capability map needs JavaScript. You can still browse the <a href="projects.html">projects</a>.</p></noscript>
+    </section>
+
+    <div class="container"><hr class="divider"></div>
+
+    <!-- Milestones -->
+    <section class="block container" id="milestones" aria-labelledby="ms-title">
+      <h2 class="section-title" id="ms-title">Milestones</h2>
+      <p class="section-sub">Awards and key moments. Evidence for each skill lives in its details on the map.</p>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <div class="container"><hr class="divider"></div>
+
+    <!-- About -->
+    <section class="block container" id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">About</h2>
+      <p class="section-sub" id="about-sub"></p>
+      <div class="about-grid" id="about-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <!-- Evidence drawer (desktop) / bottom sheet (mobile) -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <div class="drawer__inner" id="drawer-inner"></div>
+  </aside>
+  <div class="preview" id="preview" aria-hidden="true"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/map.js"></script>
+</body>
+</html>
