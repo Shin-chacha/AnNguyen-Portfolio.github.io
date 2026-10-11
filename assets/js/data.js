@@ -70,23 +70,30 @@ window.PORTFOLIO = {
       subtitle: "Credit scoring",
       year: "2026",
       categories: ["ml", "finance"],
-      summary: "Credit-scoring models that turn probability-of-default rankings into a lending approval policy.",
-      problem: "Rank loan applicants by their probability of default and translate that ranking into a lending policy a credit team could use.",
-      data: "Four integrated datasets: customer, credit-bureau, loan and transaction data, covering 9,999 applications and 479,860 transactions.",
+      summary: "A probability-of-default model that cuts expected credit losses by 77.7% while still approving 70% of applicants.",
+      problem: "A UK consumer lender (a coursework case) saw defaults climb from 7% to over 10%. Replace its old rules-based scorecard with a model that ranks applicants by probability of default and reduces expected loss by at least 25% at a 70% approval rate.",
+      data: "Four uncleaned tables at a 20 June 2026 snapshot: customers, credit bureau, loans and 18 months of transactions (479,860 rows). 9,999 loan applications with a 10% default rate, split 80/20 into training and validation sets.",
       method: [
-        "Engineered affordability, credit-behaviour and transaction-stress features.",
-        "Compared an interpretable WoE-based L1 logistic regression with a nonlinear Random Forest.",
-        "Checked probability calibration, explained predictions with SHAP and ran a fairness assessment."
+        "Documented each data-quality issue and treated it by cause: for example, a missing months-since-delinquency means \"never delinquent\", so it got a sentinel value rather than an imputed one.",
+        "Aggregated transactions to one row per customer, joined the four tables and excluded loss-given-default from the inputs to avoid target leakage.",
+        "Built Weight-of-Evidence and Information Value encodings plus ratio features such as loan-to-monthly-income.",
+        "Tuned an L1 logistic regression and a Random Forest with 5-fold cross-validation, then checked calibration, explained individual decisions with SHAP and ran a regional fairness check."
       ],
       result: [
-        "Translated probability-of-default rankings into a 70% approval policy.",
-        "Recommended production drift monitoring for the deployed model."
+        "Chose the L1 logistic regression: validation Gini 0.664 (AUC 0.832) against 0.657 for the Random Forest, with a KS of 0.52 and a Brier score of 0.074.",
+        "At a 70% approval rate, expected loss falls from £2.38M (approve everyone) to £0.53M, a 77.7% reduction against the 25% target.",
+        "A loss breakdown found unemployed applicants are 9.8% of the book but 28.5% of losses, and under-35s cause 51.8% of losses.",
+        "Proposed drift monitoring with Population Stability Index alerts (investigate above 0.10, urgent above 0.25) and vintage-based checks for target drift."
       ],
-      contribution: [],   // e.g. "Built the feature definitions", "Used AI assistance for debugging"
-      limitations: [],
+      contribution: [],
+      limitations: [
+        "Interest rate is a strong predictor, but it partly reflects the lender's previous pricing, so it may carry the old model's view of risk.",
+        "Defaulters and non-defaulters still overlap at low scores, so the model ranks risk well but cannot identify every default.",
+        "Region carries little weight (IV 0.01), but approval rates by region should still be monitored for proxy discrimination."
+      ],
       learned: [],
       links: [
-        { label: "Project files", url: "https://drive.google.com/drive/folders/1TZCRWXPbtYixXc6h3eLPwQMTbYHOJb5o?usp=drive_link" }
+        { label: "Notebook and analysis files", url: "https://drive.google.com/drive/folders/1TZCRWXPbtYixXc6h3eLPwQMTbYHOJb5o?usp=sharing" }
       ],
       skills: ["da", "py", "pd", "sk", "stat", "ml", "cls", "eval", "xai", "shap"]
     },
@@ -212,7 +219,7 @@ window.PORTFOLIO = {
         "Found that the binding constraint was the concentration rule: seven of the twelve eligible shares were banks, but only three could be held."
       ],
       contribution: [
-        "Group project with four members."
+        "Solo project."
       ],
       limitations: [
         "Each active portfolio has only ten daily return observations, so the results cannot show lasting investment skill.",
