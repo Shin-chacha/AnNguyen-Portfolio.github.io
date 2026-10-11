@@ -149,6 +149,118 @@ window.PORTFOLIO = {
       ],
       skills: ["xl", "fa", "fs", "wc", "fc", "scen", "val", "fcfe"]
     },
+    {
+      id: "fpt-equity",
+      type: "project",
+      featured: true,
+      title: "FPT Equity Research: Forecast, DDM Valuation & Risk-Return",
+      short: "FPT Equity Research",
+      subtitle: "Equity valuation",
+      year: "2026",
+      categories: ["finance"],
+      summary: "Segment-based FY2026F–FY2030F forecast, two-stage DDM and risk-return analysis behind a Selective BUY/Accumulate call on FPT.",
+      problem: "Is FPT worth buying at its current price, and on what terms? Value the shares and set an entry, target and stop-loss a disciplined investor could act on.",
+      data: "FPT annual reports (FY2021–FY2025), SSI Research, VietstockFinance and VN-Index price history, with market data such as the 10-year Vietnamese government bond yield. Modelled in an Excel working sheet.",
+      method: [
+        "Rebuilt the revenue base after FOX was deconsolidated (VND70,113B down to a comparable VND50,606B), then forecast Technology and Education separately because their margins differ sharply.",
+        "Estimated the cost of equity with CAPM (risk-free rate 4.37%, Re 9.77%) and a WACC of 9.02% from market-value weights.",
+        "Showed that a single-stage Gordon model fails (implied g of 17.64% exceeds Re) and used a two-stage DDM with a 5% terminal growth rate.",
+        "Compared FPT with the VN-Index on CAGR, volatility, Sharpe, Treynor and beta, and added a technical entry plan and an ESG review."
+      ],
+      result: [
+        "Forecast revenue rises from VND58.6 trillion (FY2026F) to VND104.6 trillion (FY2030F).",
+        "Base-case DDM value is VND60,475 per share; raising terminal growth to 7% lifts it to about VND98,456.",
+        "FPT returned 24.49% a year against 6.18% for the VN-Index, with a Sharpe ratio of 0.74 against 0.08 and a beta of 0.93.",
+        "Recommended Selective BUY/Accumulate with a VND88,000–98,000 target band and a stop-loss at VND64,000, a reward-to-risk of 3.0–4.7×."
+      ],
+      contribution: [
+        "Individual assignment.",
+        "Used ChatGPT-4o for a first draft of the ESG discussion; the final wording was rewritten by hand with further research."
+      ],
+      limitations: [
+        "The base-case DDM value sits below the market price, so the upside depends on sustained growth and a re-rating rather than on dividends alone.",
+        "A DDM is conservative for a high-growth company that retains most of its earnings, so it serves as a floor and a cross-check."
+      ],
+      learned: [],
+      links: [
+        { label: "Report and working sheet", url: "https://drive.google.com/drive/folders/1SRjhDaoknyNc27-bKVdfF1l_uicVi6ol?usp=drive_link" }
+      ],
+      skills: ["xl", "fa", "fs", "fc", "scen", "val", "ddm", "inv", "risk"]
+    },
+    {
+      id: "vn30-portfolio",
+      type: "project",
+      featured: true,
+      title: "Equity Portfolio Management: Passive and Two Active VN30 Portfolios",
+      short: "VN30 Portfolio Management",
+      subtitle: "Portfolio construction",
+      year: "2026",
+      categories: ["finance"],
+      summary: "A nine-stage process that built and evaluated three VND100 billion Vietnamese equity portfolios against the MRP-20 benchmark.",
+      problem: "Build one passive and two active portfolios of Vietnamese listed shares, each with VND100 billion, and find out whether the active process beats the benchmark within its security, sector, liquidity and concentration limits.",
+      data: "The dated VN30 universe (3 August 2026), company financials, macro data and broker valuation comparisons, evaluated with LSEG portfolio-analytics workbooks.",
+      method: [
+        "Wrote an investment policy statement, then ran a funnel: eligibility and liquidity screens, a macro transmission gate, an industry attractiveness score and a four-pillar fundamental score.",
+        "Narrowed 30 VN30 shares to 19 candidates, of which 12 passed the fundamental gate (8 robustly, 4 on the boundary).",
+        "Added a technical entry overlay (moving averages, trend, volume and ATR), then sized positions within the mandate's limits.",
+        "Measured return, tracking error, ex-ante risk and sector-allocation versus selection attribution against the MRP-20."
+      ],
+      result: [
+        "The passive portfolio matched the MRP-20 exactly (−2.60%).",
+        "Active Portfolio 1 returned +1.50% but trailed the benchmark by 0.74 percentage points.",
+        "Active Portfolio 2 lost 1.25% but beat the benchmark by 1.15 percentage points, with +0.96 points from sector allocation and +0.19 points from selection.",
+        "Found that the binding constraint was the concentration rule: seven of the twelve eligible shares were banks, but only three could be held."
+      ],
+      contribution: [
+        "Group project with four members."
+      ],
+      limitations: [
+        "Each active portfolio has only ten daily return observations, so the results cannot show lasting investment skill.",
+        "Both active portfolios missed the 90% invested floor, and an order in Active Portfolio 2 was executed at the wrong target weight.",
+        "Missing evidence kept Industrials and Real Estate (about 30% of the benchmark) out of the portfolios."
+      ],
+      learned: [],
+      links: [
+        { label: "Portfolio report", url: "https://drive.google.com/drive/folders/1YrFwnOL0CixLHb8CvCR-3Og7uxgGdqjt?usp=drive_link" }
+      ],
+      skills: ["xl", "inv", "port", "risk", "fa", "val", "ps"]
+    },
+    {
+      id: "flfp-regression",
+      type: "project",
+      featured: true,
+      title: "What Drives Female Labour-Force Participation? A Cross-Country Regression",
+      short: "Female Labour-Force Regression",
+      subtitle: "Econometrics",
+      year: "2025",
+      categories: ["analytics"],
+      summary: "A multiple-regression study of female labour-force participation across 59 lower-income countries, tested for misspecification and heteroskedasticity.",
+      problem: "Which social and economic factors explain differences in female labour-force participation between countries, and does the effect of urbanisation depend on women's education?",
+      data: "World Bank World Development Indicators for 2022, covering countries below upper-middle income: 66 complete observations, 59 after removing influential points.",
+      method: [
+        "Handled missing values with complete-case analysis and removed influential points using Cook's distance.",
+        "Regressed participation on fertility, urbanisation, education, GDP per capita, legal protection against discrimination and the female wage share, with a squared wage term and an urbanisation × education interaction.",
+        "Checked multicollinearity (VIF, with mean-centring), functional form (RESET) and heteroskedasticity (Breusch-Pagan and White) in RStudio.",
+        "Ran robustness checks: an alternative interaction, a model without education and a log-fertility specification."
+      ],
+      result: [
+        "Each extra point of fertility rate is linked to about 8.4 points lower participation (significant at 1%).",
+        "Countries with laws against gender discrimination show about 13.9 points higher participation (significant at 1%).",
+        "The wage share has a U-shaped effect with a turning point near 34.8%; the final model explains 57% of the variation (adjusted R² 0.51) and passes the RESET, Breusch-Pagan and White tests.",
+        "Recommended wider access to reproductive health and family planning, and stronger enforcement of anti-discrimination and wage laws."
+      ],
+      contribution: [],
+      limitations: [
+        "Education and its interaction term still have high VIFs (above 10).",
+        "Urbanisation may be endogenous, and this is discussed but not formally tested.",
+        "Dropping education doubles the sample to 118 but cuts the adjusted R² to 0.21, so the results are sensitive to the sample."
+      ],
+      learned: [],
+      links: [
+        { label: "Research report", url: "https://docs.google.com/document/d/1IO6zMxTMOcMHNuawFrL7iklzQyXuJW5W/edit?usp=sharing" }
+      ],
+      skills: ["stat", "econ", "rlang", "da"]
+    },
 
     /* roles / experience */
     {
@@ -196,10 +308,10 @@ window.PORTFOLIO = {
     /* coursework (RMIT) */
     { id: "course-ba", type: "course", title: "Introduction to Business Analytics", subtitle: "RMIT", year: "", skills: ["da", "kpi"] },
     { id: "course-fqa", type: "course", title: "Forecasting & Quantitative Analysis", subtitle: "RMIT", year: "", skills: ["stat", "fc"] },
-    { id: "course-eco", type: "course", title: "Basic Econometrics", subtitle: "RMIT", year: "", skills: ["stat", "reg"] },
+    { id: "course-eco", type: "course", title: "Basic Econometrics", subtitle: "RMIT", year: "", skills: ["stat", "econ"] },
     { id: "course-bdm", type: "course", title: "Business Decision Making", subtitle: "RMIT", year: "", skills: ["ps"] },
     { id: "course-cf", type: "course", title: "Corporate Finance", subtitle: "RMIT", year: "", skills: ["fa", "val"] },
-    { id: "course-eq", type: "course", title: "Equity Investment & Portfolio Management", subtitle: "RMIT", year: "", skills: ["inv"] },
+    { id: "course-eq", type: "course", title: "Equity Investment & Portfolio Management", subtitle: "RMIT", year: "", skills: ["inv", "port"] },
     { id: "course-mdm", type: "course", title: "Money & Debt Markets", subtitle: "RMIT", year: "", skills: ["inv"] }
   ],
 
@@ -235,7 +347,11 @@ window.PORTFOLIO = {
             { id: "sk", name: "scikit-learn", icon: "package", description: "Training and comparing machine-learning models." }
           ] },
         { id: "stat", name: "Statistics", icon: "dist",
-          description: "Distributions, calibration and inference behind the models and forecasts.", skills: [] },
+          description: "Distributions, calibration and inference behind the models and forecasts.",
+          skills: [
+            { id: "econ", name: "Econometrics", icon: "fit", description: "Multiple regression with diagnostics: VIF, RESET, Breusch-Pagan and White tests, Cook's distance." },
+            { id: "rlang", name: "R / RStudio", icon: "rlang", description: "Estimating and testing regression models in R." }
+          ] },
         { id: "ml", name: "Machine Learning", icon: "network",
           description: "Supervised models for credit risk and delivery-time prediction.",
           skills: [
@@ -267,10 +383,15 @@ window.PORTFOLIO = {
         { id: "val", name: "Valuation", icon: "tag",
           description: "Turning forecasts into a value per share.",
           skills: [
-            { id: "fcfe", name: "FCFE", icon: "cashflow", description: "Free cash flow to equity valuation." }
+            { id: "fcfe", name: "FCFE", icon: "cashflow", description: "Free cash flow to equity valuation." },
+            { id: "ddm", name: "DDM & WACC", icon: "coins", description: "Two-stage dividend discount model, CAPM cost of equity and WACC." }
           ] },
         { id: "inv", name: "Investment Analysis", icon: "candle",
-          description: "Learning: building an investment thesis from annual reports.", skills: [] }
+          description: "Building an investment thesis, constructing portfolios and judging the result against a benchmark.",
+          skills: [
+            { id: "port", name: "Portfolio Construction", icon: "layers", description: "Screening a universe, scoring candidates and sizing positions within mandate limits." },
+            { id: "risk", name: "Risk & Performance", icon: "shield", description: "Beta, Sharpe and Treynor ratios, tracking error and performance attribution." }
+          ] }
       ]
     },
     {
