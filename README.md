@@ -124,6 +124,9 @@ If you mistype a skill id in a project, the browser console (F12) shows a warnin
 Edit `milestones` and `recommendations` near the bottom of `data.js`. Use `kind: "featured"` for one milestone only.
 
 ### Publish an update
+After changing any CSS or JS file, bump the `?v=` number on the `style.css` and `.js` links in
+`index.html`, `projects.html` and `project.html`, so returning visitors don't mix old and new files.
+
 Edit the file on GitHub directly (open `assets/js/data.js` → pencil icon → **Commit changes**), or upload the
 changed file again. GitHub Pages refreshes in about a minute.
 
