@@ -134,6 +134,22 @@ changed file again. GitHub Pages refreshes in about a minute.
 All colours and fonts are tokens at the top of `assets/css/style.css` (`--accent-gold`, `--surface-base` …).
 Change a token once and every component follows. Text colours were chosen to meet WCAG AA contrast (4.5 : 1).
 
+### The pixel-world background
+`assets/js/bg.js` draws an original pixel-art night scene (sky, mountains, hills with trees, dirt, stone,
+caves and ore). Scrolling the page slowly moves the view from the surface down into the deep layers.
+Tune it without touching the drawing code:
+
+| Want | Change |
+|---|---|
+| More or less blur | `--bg-blur` in `style.css` (default `3px`) |
+| Darker or lighter scene | `--bg-tint` in `style.css` (raise the last number to darken) |
+| A different world | `SEED` at the top of `bg.js` |
+| Deeper or shallower dig | `WORLD_SCREENS` in `bg.js` |
+| Turn it off | remove the `bg.js` script line from the three HTML pages |
+
+The scene's colours are kept darker than the page surface so all text stays at WCAG AA contrast;
+if you brighten the palette (`C` in `bg.js`), check the text contrast again.
+
 ## 5. Accessibility and behaviour built in
 
 - Every skill is a real button: **Tab** to move, **Enter/Space** to open details, **Esc** to close.

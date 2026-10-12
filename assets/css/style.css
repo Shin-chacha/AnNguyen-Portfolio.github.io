@@ -38,6 +38,11 @@
   --row-gap: 18px;
   --stub: 20px;
 
+  --bg-sky: #0B0E18;
+  --bg-blur: 3px;
+  --bg-tint: rgba(18, 21, 31, 0.28);
+  --surface-glass: rgba(20, 24, 35, 0.78);
+
   --t-fast: 140ms;
   --t-mid: 200ms;
   --t-slow: 260ms;
@@ -56,6 +61,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img, svg { display: block; }
+
+/* ---- Pixel-world background (drawn by assets/js/bg.js) ----
+   Fixed behind all content. Each layer is blurred once and only translated
+   on scroll, so the blur is never recomputed while scrolling. */
+.world-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: var(--bg-sky); }
+.world-bg__layer { position: absolute; left: 0; top: 0; image-rendering: pixelated; image-rendering: crisp-edges; filter: blur(var(--bg-blur)); will-change: transform; transform: translate3d(0, 0, 0); }
+.world-bg__sky { filter: blur(calc(var(--bg-blur) + 1px)); }
+.world-bg__far { filter: blur(calc(var(--bg-blur) + 2px)); }
+.world-bg::after { content: ""; position: absolute; inset: 0; background:
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(5, 6, 10, 0.45) 100%),
+    var(--bg-tint); }
+@media print { .world-bg { display: none; } }
 a { color: var(--accent-gold-hi); text-underline-offset: 3px; }
 a:hover { color: #F3DC94; }
 button { font: inherit; color: inherit; }
@@ -75,6 +92,9 @@ button { font: inherit; color: inherit; }
 
 /* ------------------------------------------------------------ header */
 .site-header { position: sticky; top: 0; z-index: 40; background: var(--surface-header); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header { background: var(--surface-glass); -webkit-backdrop-filter: blur(14px) saturate(120%); backdrop-filter: blur(14px) saturate(120%); }
+}
 .header__inner { height: 72px; display: flex; align-items: center; gap: 24px; }
 .brand { font-family: var(--font-mono); font-weight: 700; font-size: 20px; color: var(--text-primary); text-decoration: none; }
 .nav { display: flex; align-items: center; flex: 1; justify-content: space-between; margin-left: 32px; }
