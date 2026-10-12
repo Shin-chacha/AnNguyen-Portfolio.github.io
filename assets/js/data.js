@@ -101,29 +101,38 @@ window.PORTFOLIO = {
       id: "ecommerce",
       type: "project",
       featured: true,
-      title: "E-commerce Sales & Operations Analytics",
-      short: "E-commerce Analytics",
-      subtitle: "Operations modelling",
+      title: "E-commerce Platform Performance: Power BI, Delivery-Time Model & Seller Segmentation",
+      short: "E-commerce Analytics (Power BI)",
+      subtitle: "Power BI + operations modelling",
       year: "2026",
       categories: ["analytics", "ml"],
-      summary: "A sales-and-profit dashboard plus a leakage-aware model that predicts delivery time at the moment an order is placed.",
-      problem: "Give the business a clear view of sales and profit, and estimate how long an order will take to arrive using only what is known when it is placed.",
-      data: "",
+      summary: "A Power BI performance review of an e-commerce marketplace, a leakage-aware delivery-time model and a seller segmentation, turned into a prioritised logistics plan.",
+      problem: "Order growth had plateaued. Find what is holding the platform back across business, logistics and marketing, and decide where to act first.",
+      data: "Marketplace tables for orders, payments, reviews, products, seller leads (MQLs) and closed deals. Columns more than 50% empty were dropped, small gaps were filled with the mode or mean, and missing delivery dates were kept because they reflect order status.",
       method: [
-        "Built a sales-and-profit dashboard.",
-        "Trained a delivery-time model using only order-placement features.",
-        "Excluded post-purchase outcomes so the model could not learn from information it would not have in practice (leakage)."
+        "Built a Power BI report on order growth, average order value, freight cost share, cancellations by lifecycle stage and delivery times.",
+        "Predicted delivery time at the moment of purchase with a linear regression on log distance and buyer and seller state, excluding post-purchase fields to avoid leakage.",
+        "Segmented sellers with K-Means, cross-checked with a Gaussian Mixture Model and PCA, on scale, logistics friction, reliability and growth.",
+        "Ranked three logistics initiatives with a weighted decision matrix: impact, feasibility, time to value and complexity."
       ],
       result: [
-        "Delivery-time predictions with a mean absolute error of about 7.56 days."
+        "Showed growth was capped by last-mile delivery, not sellers: seller handover lateness fell to zero within a month of launch while last-mile times stayed high.",
+        "Delivery-time predictions with a mean absolute error of about 7.56 days, against a median delivery of about 10 days, using only information known at purchase.",
+        "Predictive delivery estimates ranked first in the decision matrix (49 points against 33 and 30).",
+        "Only 10.5% of seller leads converted; 484 strategic sellers formed the core revenue engine, while 488 underperforming sellers carried the most delivery risk."
       ],
-      contribution: [],
-      limitations: [],
+      contribution: [
+        "Team project with three members."
+      ],
+      limitations: [
+        "An error of about a week is a deliberate trade-off: the model uses only features known at purchase, so it avoids leakage but cannot see later delays."
+      ],
       learned: [],
       links: [
-        { label: "Project files", url: "https://drive.google.com/drive/folders/1Csgp3QMVk0j8Kxi9D9zvR98xEciw2HL-?usp=sharing" }
+        { label: "Power BI report and slides", url: "https://drive.google.com/drive/folders/1D21GyHvmCJ1FEB68dsPvljFtZD31VJuu?usp=sharing" },
+        { label: "Analysis files", url: "https://drive.google.com/drive/folders/1Csgp3QMVk0j8Kxi9D9zvR98xEciw2HL-?usp=sharing" }
       ],
-      skills: ["da", "bi", "dash", "kpi", "py", "pd", "ml", "reg", "eval"]
+      skills: ["da", "bi", "pbi", "dash", "kpi", "py", "pd", "sk", "ml", "reg", "eval", "ps"]
     },
     {
       id: "svc-valuation",
@@ -338,7 +347,7 @@ window.PORTFOLIO = {
         { id: "bi", name: "BI & Reporting", icon: "pie",
           description: "Reports and dashboards that make performance easy to read and act on.",
           skills: [
-            { id: "pbi", name: "Power BI", icon: "bars_v", description: "Learning. Add a project here once a dashboard is built in Power BI." },
+            { id: "pbi", name: "Power BI", icon: "bars_v", description: "Marketplace performance report: growth, order value, freight costs, cancellations and delivery times." },
             { id: "dash", name: "Dashboarding", icon: "dashboard", description: "Designing dashboards around the decisions they support." },
             { id: "kpi", name: "KPI Analysis", icon: "target", description: "Choosing, defining and tracking the metrics that matter to a business." }
           ] }
