@@ -2,7 +2,7 @@
    milestones and about. All content comes from data.js. */
 (function () {
   "use strict";
-  const { P, icon, esc, skills, cats, evById, counts, catStats, WORK, TYPE_LABEL, params } = window.PF;
+  const { P, icon, esc, skills, cats, evById, counts, catStats, WORK, TYPE_LABEL, params, RANK, RANK_PIPS } = window.PF;
 
   const state = {
     view: "overview",          // "overview" or a category id
@@ -28,7 +28,7 @@
       <a class="btn btn--ghost" href="${esc(pr.linkedin)}" target="_blank" rel="noopener">LinkedIn ${icon("ext", 14)}</a>`;
     $("hero-stats").innerHTML = [
       [counts.projects, counts.projects === 1 ? "Project" : "Projects"],
-      [counts.skillsWithEvidence, "Skills with evidence"],
+      [counts.unlocked, "Skills unlocked"],
       [counts.certifications, counts.certifications === 1 ? "Certification" : "Certifications"]
     ].map(([n, l]) => `<li><strong>${n}</strong><span>${l}</span></li>`).join("");
     $("status-card").innerHTML = `
@@ -63,10 +63,20 @@
   }
 
   /* ---------------------------------------------------------- helpers */
+  const stCls = (s) => "st-" + s.status.toLowerCase();
+  let revealIdx = 0;
+
+  function pipsHTML(s) {
+    const n = RANK_PIPS[s.status];
+    return `<span class="pips" aria-hidden="true">${[1, 2, 3].map((i) => `<i class="${i <= n ? "on" : ""}"></i>`).join("")}</span>`;
+  }
+
   function nodeHTML(s, withBadge) {
-    const cls = s.status === "Proven" ? "is-proven" : s.status === "Learning" ? "is-learning" : "";
+    const cls = s.status === "Proven" ? "is-proven" : s.status === "Learning" ? "is-learning" : "is-applied";
     const badge = withBadge && s.ev.length ? `<span class="badge" aria-hidden="true">${s.ev.length}</span>` : "";
-    return `<span class="node ${cls}">${icon(s.icon, 24)}${badge}</span>`;
+    const mark = s.status === "Learning" ? `<span class="node__mark node__mark--lock" aria-hidden="true">${icon("lock", 12)}</span>`
+      : s.status === "Proven" ? `<span class="node__mark node__mark--star" aria-hidden="true">${icon("star", 12)}</span>` : "";
+    return `<span class="node ${cls}" style="--i:${revealIdx++}">${icon(s.icon, 24)}${badge}${mark}</span>`;
   }
 
   function rowHTML(s, extra) {
@@ -75,11 +85,20 @@
         ${nodeHTML(s, true)}
         <span class="row__text">
           <span class="row__name">${esc(s.name)}</span>
-          <span class="row__meta">${s.status}${extra || ""}</span>
-          <span class="sr-only">, ${n} evidence item${n === 1 ? "" : "s"}. Open details.</span>
+          <span class="row__meta">${pipsHTML(s)}${s.status}${extra || ""}</span>
+          <span class="sr-only">, ${RANK[s.status]}, ${n} evidence item${n === 1 ? "" : "s"}. Open details.</span>
         </span>
       </button>`;
   }
+
+  /* Segmented progress bar: one segment per skill, gold when mastered. */
+  function xpHTML(list, label) {
+    const order = { Proven: 0, Applied: 1, Learning: 2 };
+    const segs = list.slice().sort((a, b) => order[a.status] - order[b.status])
+      .map((s) => `<i class="${s.status === "Proven" ? "gold" : s.status === "Applied" ? "on" : ""}"></i>`).join("");
+    return `<span class="xp" role="img" aria-label="${esc(label)}">${segs}</span>`;
+  }
+  const catSkills = (catId) => Object.values(skills).filter((s) => s.catId === catId);
 
   function pathInfo() {
     const sel = state.selected && skills[state.selected];
@@ -90,10 +109,13 @@
   /* ------------------------------------------------------ desktop tree */
   function renderDesktop() {
     const pr = P.profile;
+    revealIdx = 0;
     $("map-root").innerHTML = `<span class="root-node" aria-hidden="true">${esc(pr.initials)}</span>
-      <span class="map-root__label"><strong>${esc(pr.name.toUpperCase())}</strong><span>${esc(pr.tagline)}</span></span>`;
+      <span class="map-root__label"><strong>${esc(pr.name.toUpperCase())}</strong><span>${esc(pr.tagline)}</span>
+        <span class="map-root__xp">${counts.unlocked}/${counts.skills} skills unlocked · ${counts.proven} mastered</span></span>`;
     const path = pathInfo();
     $("branches").innerHTML = P.tree.map((cat) => {
+      revealIdx = 0;               // each tree unlocks in parallel, top to bottom
       const st = catStats(cat.id);
       const collapsed = state.collapsed.has(cat.id);
       const onPath = path && path.cat === cat.id;
@@ -111,16 +133,20 @@
           if (leafIdx > -1 && j < leafIdx) kc = "path-through";
           if (leafIdx > -1 && j === leafIdx) kc = "path-end";
           if (path && path.capSelected === cap.id) kc = "rel li-related";
-          return `<li class="${kc}">${rowHTML(k)}</li>`;
+          const nx = kids[j + 1] && kids[j + 1].status === "Learning" ? " nx-locked" : "";
+          return `<li class="${kc} ${stCls(k)}${nx}">${rowHTML(k)}</li>`;
         }).join("")}</ul>` : "";
-        return `<li class="${cls}">${rowHTML(s)}${kidHTML}</li>`;
+        const nextCap = cat.capabilities[i + 1] && skills[cat.capabilities[i + 1].id];
+        const nx = nextCap && nextCap.status === "Learning" ? " nx-locked" : "";
+        return `<li class="${cls} ${stCls(s)}${nx}">${rowHTML(s)}${kidHTML}</li>`;
       }).join("");
       return `<section class="branch${collapsed ? " is-collapsed" : ""}${onPath ? " on-path" : ""}" data-cat="${cat.id}" aria-labelledby="cat-${cat.id}">
           <div class="cat-row">
             <span class="cat-node" aria-hidden="true">${icon(cat.icon, 28)}</span>
             <div class="cat-label">
               <h3 id="cat-${cat.id}">${esc(cat.name)}</h3>
-              <p>${st.total} skills${collapsed ? "" : ` · ${st.proven} proven`}</p>
+              <p>${st.unlocked}/${st.total} unlocked${st.proven ? ` · ${st.proven} mastered` : ""}</p>
+              ${xpHTML(catSkills(cat.id), `${st.unlocked} of ${st.total} skills unlocked, ${st.proven} mastered`)}
             </div>
             <button type="button" class="toggle" data-toggle="${cat.id}" aria-expanded="${!collapsed}" aria-controls="tree-${cat.id}"
               aria-label="${collapsed ? "Expand" : "Collapse"} ${esc(cat.name)}"><span aria-hidden="true">${collapsed ? "+" : "−"}</span></button>
@@ -163,18 +189,19 @@
       const rows = cat.capabilities.map((cap) => {
         const s = skills[cap.id];
         const kids = (cap.skills || []).map((k) => skills[k.id]);
-        const r = (x, lvl) => `<li class="${lvl}"><button type="button" class="row" data-skill="${x.id}" aria-haspopup="dialog">
+        const r = (x, lvl) => `<li class="${lvl} ${stCls(x)}"><button type="button" class="row" data-skill="${x.id}" aria-haspopup="dialog">
             ${nodeHTML(x, false)}
             <span class="row__text"><span class="row__name">${esc(x.name)}</span>
-            <span class="row__meta">${x.status} · ${x.ev.length} evidence</span></span>
+            <span class="row__meta">${pipsHTML(x)}${x.status} · ${x.ev.length} evidence</span></span>
             ${icon("chev_r", 16, "chev")}
           </button></li>`;
         return r(s, "lvl2") + kids.map((k) => r(k, "lvl3")).join("");
       }).join("");
-      return `<div class="acc${open ? " is-open" : ""}">
+      return `<div class="acc${open ? " is-open" : ""}" data-cat="${cat.id}">
           <button type="button" class="acc__head" data-acc="${cat.id}" aria-expanded="${open}" aria-controls="acc-${cat.id}">
             <span class="cat-node" aria-hidden="true">${icon(cat.icon, 22)}</span>
-            <span class="cat-label"><h3>${esc(cat.name)}</h3><p>${st.total} skills · ${st.proven} proven</p></span>
+            <span class="cat-label"><h3>${esc(cat.name)}</h3><p>${st.unlocked}/${st.total} unlocked${st.proven ? ` · ${st.proven} mastered` : ""}</p>
+              ${xpHTML(catSkills(cat.id), `${st.unlocked} of ${st.total} skills unlocked, ${st.proven} mastered`)}</span>
             ${icon("chev_r", 18, "chev")}
           </button>
           <ul class="acc__panel" id="acc-${cat.id}"${open ? "" : " hidden"}>${rows}</ul>
@@ -201,7 +228,7 @@
     if (!s) return;
     const pv = $("preview");
     const work = s.ev.filter((id) => WORK.includes(evById[id].type)).map((id) => evById[id]);
-    pv.innerHTML = `<h4>${esc(s.name)}</h4><p class="st">${s.status}</p>
+    pv.innerHTML = `<h4>${esc(s.name)}</h4><p class="st">${pipsHTML(s)}${s.status} · ${RANK[s.status]}</p>
       <p class="use">${work.length ? `Used in ${work.length} project${work.length === 1 ? "" : "s"} or role${work.length === 1 ? "" : "s"}` : "No project evidence yet"}</p>
       ${work.length ? `<p class="k">Key evidence</p><ul>${work.slice(0, 2).map((e) => `<li>${esc(e.short || e.title)}</li>`).join("")}</ul>` : ""}
       <p class="cta">Select for details →</p>`;
@@ -228,6 +255,15 @@
     return cats[s.catId].capabilities.map((c) => skills[c.id]).filter((x) => x.id !== s.id);
   }
 
+  /* What it takes to reach the next rank, from the real status rules. */
+  function questText(s) {
+    const w = s.ev.filter((id) => WORK.includes(evById[id].type)).length;
+    if (s.status === "Learning") return "To unlock: use it in a project, role or competition.";
+    if (s.status === "Proven") return "Mastered: repeated evidence, rebuilt without help.";
+    return w >= 2 ? "Next rank: confirm it can be rebuilt without help to master it."
+      : "Next rank: one more project, role or competition, rebuilt without help.";
+  }
+
   function drawerHTML(s) {
     const cat = cats[s.catId];
     const ev = s.ev.map((id) => evById[id]);
@@ -243,7 +279,8 @@
         <button type="button" class="icon-btn" data-close aria-label="Close details">${icon("close", 18)}</button>
       </div>
       <h2 id="drawer-title">${esc(s.name)}</h2>
-      <div class="drawer__status"><span class="pill ${pillCls}">${s.status}</span><span>${ev.length} evidence item${ev.length === 1 ? "" : "s"}</span></div>
+      <div class="drawer__status"><span class="pill ${pillCls}">${s.status}</span><span class="rank rank--${s.status.toLowerCase()}">${pipsHTML(s)}${RANK[s.status]}</span><span>${ev.length} evidence item${ev.length === 1 ? "" : "s"}</span></div>
+      <p class="quest">${icon(s.status === "Proven" ? "star" : s.status === "Learning" ? "lock" : "flag", 14)}<span>${questText(s)}</span></p>
       ${s.description ? `<p class="drawer__desc">${esc(s.description)}</p>` : ""}
       <hr>
       ${ev.length === 0 ? `<p class="empty">No evidence yet. This skill is on the learning plan.</p>` : ""}
@@ -255,9 +292,10 @@
       }).join("")}
       ${rel.length ? `<h3>Related skills</h3><ul class="chips">${rel.map((r) =>
         `<li><button type="button" class="chip chip--sm" data-open="${r.id}">${esc(r.name)}</button></li>`).join("")}</ul>` : ""}
-      <div class="note"><p class="kicker">How status is set</p>
-        <p>Applied: used in at least one project, role or competition.</p>
-        <p>Proven: repeated evidence that I can rebuild without help.</p></div>
+      <div class="note"><p class="kicker">How ranks are set</p>
+        <p>Locked · Learning: on the learning plan, no project evidence yet.</p>
+        <p>Unlocked · Applied: used in at least one project, role or competition.</p>
+        <p>Mastered · Proven: repeated evidence that I can rebuild without help.</p></div>
       ${nProj ? `<a class="btn btn--primary btn--block" href="projects.html?skill=${encodeURIComponent(s.id)}">View ${nProj} project${nProj === 1 ? "" : "s"} using ${esc(s.name)} ${icon("arrow_r", 16)}</a>` : ""}`;
   }
 
@@ -430,6 +468,19 @@
   renderMilestones();
   renderAbout();
   bind();
+  // One-time "unlock" animation when the map first scrolls into view.
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    $("map-desktop").classList.add("will-reveal");
+    const io = new IntersectionObserver((ents) => {
+      if (!ents.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      const m = $("map-desktop");
+      m.classList.add("is-revealing");
+      setTimeout(() => { m.classList.remove("will-reveal", "is-revealing"); }, 1400);
+    }, { threshold: 0.12 });
+    io.observe($("map-desktop"));
+  }
   const deep = q.get("skill");
   if (deep && skills[deep]) {
     const s = skills[deep];

@@ -406,3 +406,102 @@ a.ev-card:hover { border-color: var(--border-hover); color: var(--text-primary);
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   .row.is-selected .node { transform: none; }
 }
+
+/* ==========================================================================
+   Talent-tree theme for the skill map (game accents, recruiter-first)
+   Ranks mirror the evidence rules: Locked = Learning, Unlocked = Applied,
+   Mastered = Proven. Each category has its own accent colour (--cat).
+   ========================================================================== */
+[data-cat="analytics"] { --cat: #6FC3DF; --cat-rgb: 111, 195, 223; }
+[data-cat="data"]      { --cat: #A78BFA; --cat-rgb: 167, 139, 250; }
+[data-cat="finance"]   { --cat: #7FD18B; --cat-rgb: 127, 209, 139; }
+[data-cat="business"]  { --cat: #F08CAE; --cat-rgb: 240, 140, 174; }
+:root { --font-pixel: "Pixelify Sans", var(--font-mono); --locked: rgba(110, 118, 134, 0.55); }
+
+.map-section .section-title { font-family: var(--font-pixel); font-size: clamp(26px, 3.2vw, 34px); font-weight: 700; letter-spacing: 0.04em; }
+
+/* category panels */
+.branches { column-gap: 16px; }
+.branch { position: relative; padding: 18px 14px 24px; border-radius: 10px; background: rgba(13, 16, 24, 0.82);
+  border: 1px solid rgba(var(--cat-rgb), 0.30); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px rgba(0, 0, 0, 0.38);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); --node: 54px; }
+.branch::before { content: ""; position: absolute; left: 18px; right: 18px; top: -1px; height: 3px; border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, transparent, var(--cat), transparent); }
+.branch.on-path { border-color: rgba(228, 198, 110, 0.55); }
+.cat-node { border-color: var(--cat); color: var(--cat); background: rgba(var(--cat-rgb), 0.08); box-shadow: 0 0 0 4px rgba(var(--cat-rgb), 0.08); }
+.cat-label { flex: 1; }
+.cat-label h3 { font-family: var(--font-pixel); font-size: 18px; font-weight: 700; letter-spacing: 0.06em; }
+.xp { display: flex; gap: 2px; width: 100%; max-width: 168px; margin-top: 8px; }
+.xp i { flex: 1 1 0; min-width: 4px; height: 6px; border-radius: 1px; background: #2B303D; }
+.xp i.on { background: var(--cat); }
+.xp i.gold { background: var(--accent-gold-hi); box-shadow: 0 0 6px rgba(228, 198, 110, 0.6); }
+
+/* root "player" node */
+.map-trunk path { stroke: rgba(201, 166, 80, 0.45); }
+.root-node { box-shadow: 0 0 0 8px rgba(228, 198, 110, 0.12), 0 0 28px rgba(228, 198, 110, 0.25); }
+.map-root__xp { display: block; margin-top: 4px; font-size: 11px; letter-spacing: 0.06em; color: var(--text-secondary); }
+
+/* skill nodes as talent frames */
+.node { border-radius: 6px; background: linear-gradient(180deg, #171B26, #0E111A); border: 2px solid #4A5163; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55); }
+.node::after { inset: 3px; border-radius: 3px; border-color: rgba(255, 255, 255, 0.06); }
+.node.is-applied { border-color: var(--cat); color: var(--cat); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55), inset 0 0 14px rgba(var(--cat-rgb), 0.20); }
+.node.is-learning { border: 2px dashed #596072; background: #0C0F16; color: #858C9D; }
+.node.is-learning .icon { opacity: 0.8; }
+.node.is-proven { border-color: var(--accent-gold-hi); color: var(--accent-gold-hi); background: radial-gradient(circle at 50% 35%, #3B3119, #1D180D);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55), 0 0 14px rgba(228, 198, 110, 0.32), inset 0 0 12px rgba(228, 198, 110, 0.22);
+  animation: tt-glow 3.4s ease-in-out infinite; }
+@keyframes tt-glow { 50% { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55), 0 0 24px rgba(228, 198, 110, 0.5), inset 0 0 14px rgba(228, 198, 110, 0.3); } }
+.node__mark { position: absolute; right: -7px; bottom: -7px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; }
+.node__mark .icon { width: 12px; height: 12px; }
+.node__mark--lock { background: #1A1E29; border: 1px solid #596072; color: #B7BDC8; }
+.node__mark--star { background: var(--accent-gold); border: 1px solid var(--accent-gold-hi); color: var(--on-gold); }
+.row:hover .node.is-applied { border-color: var(--cat); background: linear-gradient(180deg, #1C2130, #121620); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55), 0 0 16px rgba(var(--cat-rgb), 0.35), inset 0 0 16px rgba(var(--cat-rgb), 0.25); }
+.row:hover .node.is-learning { border-color: #8C93A3; }
+.row:hover .node { transform: translateY(-2px); }
+.row.is-selected .node { transform: scale(1.05); }
+
+/* rank pips (◆◆◇) */
+.pips { display: inline-flex; gap: 4px; margin-right: 8px; vertical-align: 1px; }
+.pips i { width: 6px; height: 6px; transform: rotate(45deg); background: #3A4050; }
+.pips i.on { background: var(--cat, #B7BDC8); }
+.st-proven > .row .pips i.on, .rank--proven .pips i.on, .preview .pips i.on { background: var(--accent-gold-hi); }
+.rank--applied .pips i.on { background: #B7BDC8; }
+
+/* connectors light up when the skill below them is unlocked */
+.tree li { --lc-in: rgba(var(--cat-rgb), 0.55); --lc-out: rgba(var(--cat-rgb), 0.55); --lc-stub: rgba(var(--cat-rgb), 0.55); --ls-in: solid; --ls-out: solid; }
+.tree li.st-learning { --lc-in: var(--locked); --lc-stub: var(--locked); --ls-in: dashed; }
+.tree li.nx-locked { --lc-out: var(--locked); --ls-out: dashed; }
+.tree li::before { border-left-style: var(--ls-in); }
+.tree li::after { border-left-style: var(--ls-out); }
+.tree li > .row::before { border-top-style: var(--ls-in); }
+.tree li.path-through { --lc-in: var(--connector-selected); --lc-out: var(--connector-selected); --ls-in: solid; --ls-out: solid; }
+.tree li.path-end { --lc-in: var(--connector-selected); --lc-stub: var(--connector-selected); --ls-in: solid; }
+.tree li.rel { --lc-in: var(--connector-related); --lc-out: var(--connector-related); --lc-stub: var(--connector-related); }
+
+/* legend */
+.legend .lg-node { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #8AA9C4; background: #121620; box-shadow: inset 0 0 6px rgba(111, 195, 223, 0.25); }
+.legend .lg-node--learning { border-style: dashed; border-color: #596072; box-shadow: none; }
+.legend .lg-node--proven { border-color: var(--accent-gold-hi); background: #2A2416; box-shadow: 0 0 8px rgba(228, 198, 110, 0.45); }
+
+/* one-time "unlock" reveal */
+.map-desktop.will-reveal:not(.is-revealing) .node { opacity: 0; }
+.map-desktop.is-revealing .node { animation: tt-unlock 440ms cubic-bezier(0.2, 0.9, 0.3, 1.25) backwards; animation-delay: calc(var(--i) * 45ms); }
+@keyframes tt-unlock { from { opacity: 0; transform: scale(0.6); } }
+
+/* drawer: rank + next quest */
+.rank { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-primary); }
+.quest { display: flex; align-items: flex-start; gap: 10px; margin: 16px 0 0; padding: 12px 14px; border-left: 3px solid var(--accent-gold); border-radius: 0 6px 6px 0; background: rgba(228, 198, 110, 0.07); font-size: 14px; color: var(--text-primary); }
+.quest .icon { flex: none; margin-top: 3px; color: var(--accent-gold-hi); }
+
+/* mobile accordion */
+.acc { border-left: 3px solid var(--cat); }
+.acc.is-open { border-color: var(--cat); border-left-color: var(--cat); }
+.acc .xp { max-width: 200px; }
+.acc__panel .node__mark { width: 18px; height: 18px; right: -6px; bottom: -6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .node.is-proven { animation: none; }
+  .map-desktop.is-revealing .node { animation: none; }
+  .map-desktop.will-reveal .node { opacity: 1; }
+  .row:hover .node, .row.is-selected .node { transform: none; }
+}

@@ -35,6 +35,8 @@
     layers: "M12 3 L21 8 L12 13 L3 8 Z M3 12.5 L12 17.5 L21 12.5 M3 17 L12 22 L21 17",
     shield: "M12 3 L20 6 V12 C20 16.5 16.6 19.8 12 21 C7.4 19.8 4 16.5 4 12 V6 Z M8.5 12 L11 14.5 L15.5 10",
     rlang: "M3 12 C3 7.6 7 4 12 4 C17 4 21 7.6 21 12 C21 16.4 17 20 12 20 C7 20 3 16.4 3 12 Z M9 17 V8 H13.5 C15.4 8 16.5 9.1 16.5 10.7 C16.5 12.3 15.4 13.4 13.5 13.4 H9 M13 13.4 L16.5 17",
+    lock: "M7 11 V8 C7 5.2 9.2 3 12 3 C14.8 3 17 5.2 17 8 V11 M5 11 H19 V21 H5 Z M12 15 V17",
+    star: "M12 3 L14.6 8.6 L20.6 9.3 L16.1 13.4 L17.3 19.4 L12 16.4 L6.7 19.4 L7.9 13.4 L3.4 9.3 L9.4 8.6 Z",
     candle: "M7 3 V7 M7 15 V21 M5 7 H9 V15 H5 Z M17 3 V9 M17 14 V21 M15 9 H19 V14 H15 Z",
     hierarchy: "M9 3 H15 V8 H9 Z M12 8 V12 M5 12 H19 M5 12 V16 M19 12 V16 M2 16 H8 V21 H2 Z M16 16 H22 V21 H16 Z",
     bubbles: "M3 4 H15 V12 H8 L4 15 V12 H3 Z M17 8 H21 V16 H20 V19 L16 16 H10 V14",
@@ -106,7 +108,11 @@
 
   function catStats(catId) {
     const list = Object.values(skills).filter((s) => s.catId === catId);
-    return { total: list.length, proven: list.filter((s) => s.status === "Proven").length };
+    return {
+      total: list.length,
+      proven: list.filter((s) => s.status === "Proven").length,
+      unlocked: list.filter((s) => s.status !== "Learning").length
+    };
   }
 
   const projects = P.evidence.filter((e) => e.type === "project");
@@ -118,6 +124,7 @@
     skillsWithEvidence: Object.values(skills).filter((s) => s.ev.length).length,
     skills: Object.keys(skills).length,
     proven: Object.values(skills).filter((s) => s.status === "Proven").length,
+    unlocked: Object.values(skills).filter((s) => s.status !== "Learning").length,
     certifications: P.evidence.filter((e) => e.type === "certification").length
   };
 
@@ -175,5 +182,8 @@
 
   function params() { return new URLSearchParams(window.location.search); }
 
-  window.PF = { P, ICONS, icon, esc, skills, cats, evById, projects, projectSkills, counts, catStats, WORK, TYPE_LABEL, renderHeader, renderFooter, params };
+  /* Game-style rank names shown next to the plain status words. */
+  const RANK = { Learning: "Locked", Applied: "Unlocked", Proven: "Mastered" };
+  const RANK_PIPS = { Learning: 1, Applied: 2, Proven: 3 };
+  window.PF = { RANK, RANK_PIPS, P, ICONS, icon, esc, skills, cats, evById, projects, projectSkills, counts, catStats, WORK, TYPE_LABEL, renderHeader, renderFooter, params };
 })();
