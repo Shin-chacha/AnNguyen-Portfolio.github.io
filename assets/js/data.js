@@ -278,6 +278,45 @@ window.PORTFOLIO = {
       skills: ["stat", "econ", "rlang", "da"]
     },
 
+    {
+      id: "fba-hdbank",
+      type: "project",
+      featured: true,
+      title: "HDBank Agricultural Value-Chain Financing (Future Business Analyst 2026, Top 15)",
+      short: "FBA 2026 · HDBank (Top 15)",
+      subtitle: "Business analysis case · Top 15",
+      year: "2026",
+      categories: ["business", "finance"],
+      summary: "A Top 15 entry in Future Business Analyst 2026: a value-chain lending model that gives HDBank visibility over farmers' seasonal cash flows, so it can catch bad loans earlier.",
+      problem: "HDBank's NPL ratio rose from 1.65% (Q1 2022) to 2.79% (Q2 2026) while loan-loss coverage fell to 50.01%. As it grows rural and agricultural lending, how can it see and control borrowers' seasonal cash flows early enough to stabilise bad loans without slowing credit growth?",
+      data: "Public secondary data only, with no borrower-level personal data: HDBank reports, Vietcap, FiinRatings, the National Statistics Office, VCCI surveys and World Bank research, aligned by period and unit and checked against the original publications.",
+      method: [
+        "Diagnosed the problem top-down: the macroeconomy, the banking industry, then a CAMEL review of HDBank (capital, asset quality, management, earnings and liquidity).",
+        "Turned seven lending challenges and seven case studies into four alternative designs, scored them on seven weighted criteria such as cash-flow visibility and use-of-funds control, and checked that the ranking held under other scores and weights.",
+        "Mapped the end-to-end lending process in BPMN, from intake and credit decision to staged disbursement, monitoring, repayment and shortfall handling.",
+        "Assessed feasibility and risks (likelihood × impact) and designed a pilot with process and credit-quality KPIs."
+      ],
+      result: [
+        "Recommended a multi-buyer, semi-closed value-chain model, which scored 94 of 100 against 75, 70 and 65 for the alternatives.",
+        "Four controls: risk-based assessment on verified partner data, staged payments straight to approved suppliers, production monitoring, and repayment deducted from sales proceeds paid into HDBank accounts.",
+        "Proposed a pilot covering one region, one value chain and one crop cycle, with targets such as an early-detection rate of at least 70%, on-time repayment of at least 95% and a pilot NPL ratio of at most 2.2%.",
+        "Placed in the Top 15 of Future Business Analyst 2026."
+      ],
+      contribution: [
+        "Team entry."
+      ],
+      limitations: [
+        "The scorecard is illustrative: wider roll-out should depend on pilot results, not on the scores.",
+        "Feasibility was the model's weakest criterion (3 of 5), which is why it starts as a pilot.",
+        "Collusion on delivery receipts, sales to spot traders outside the repayment channel and climate shocks remain risks that the mitigations must handle in practice."
+      ],
+      learned: [],
+      links: [
+        { label: "Competition report", url: "https://drive.google.com/drive/folders/1CKDd-J5icESeanT24GDzZuC9XvDQA3iA?usp=sharing" }
+      ],
+      skills: ["ps", "bpmn", "fa", "scen", "kpi"]
+    },
+
     /* roles / experience */
     {
       id: "rbac", type: "role",
@@ -419,6 +458,8 @@ window.PORTFOLIO = {
           description: "Working with partners, mentors and learners to keep everyone aligned.", skills: [] },
         { id: "coord", name: "Project Coordination", icon: "check", proven: true,
           description: "Planning, tracking and delivering multi-person projects.", skills: [] },
+        { id: "bpmn", name: "Process Design (BPMN)", icon: "flow",
+          description: "Mapping end-to-end business processes, hand-offs and controls in BPMN.", skills: [] },
         { id: "pres", name: "Presentation", icon: "present",
           description: "Presenting analysis and recommendations to an audience.", skills: [] }
       ]
@@ -431,6 +472,7 @@ window.PORTFOLIO = {
     { year: "2023", title: "National Champion", subtitle: "AI Competition (AIC) · Deakin & FPT", kind: "featured", icon: "trophy" },
     { year: "2024 – 2025", title: "Case Team Leader", subtitle: "RMIT Business Analytics Champion", kind: "standard", icon: "flag" },
     { year: "2025", title: "Top 12 of 200 teams", subtitle: "Tomorrow Marketers case competition", kind: "standard", icon: "star" },
+    { year: "2026", title: "Top 15", subtitle: "Future Business Analyst 2026 · HDBank case", kind: "standard", icon: "star" },
     { year: "Jan 2027", title: "Graduation", subtitle: "RMIT · Finance; Business & Technology", kind: "upcoming", icon: "cap" }
   ],
 
