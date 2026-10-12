@@ -23,7 +23,7 @@
     $("hero-tag").textContent = pr.tagline;
     $("hero-intro").textContent = pr.intro;
     $("hero-actions").innerHTML = `
-      <a class="btn btn--primary" href="#map">Explore skill map ${icon("chev_d", 16)}</a>
+      <a class="btn btn--primary" href="#map">Explore skill tree ${icon("chev_d", 16)}</a>
       ${pr.cvUrl ? `<a class="btn btn--ghost" href="${esc(pr.cvUrl)}" target="_blank" rel="noopener">Download CV</a>` : ""}
       <a class="btn btn--ghost" href="${esc(pr.linkedin)}" target="_blank" rel="noopener">LinkedIn ${icon("ext", 14)}</a>`;
     $("hero-stats").innerHTML = [
