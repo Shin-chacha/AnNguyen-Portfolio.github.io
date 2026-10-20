@@ -50,23 +50,31 @@
 
   function card(p) {
     const tags = projectSkills(p).slice(0, 4);
-    return `<a class="pcard${p.featured ? " pcard--featured" : ""}" href="project.html?id=${encodeURIComponent(p.id)}">
-        ${p.featured ? `<span class="flag">FEATURED</span>` : ""}
-        <h3>${esc(p.title)}</h3>
-        <p class="sub">${esc(p.subtitle || "")}</p>
-        <p class="sum">${esc(p.summary || "")}</p>
-        <ul class="chips" aria-label="Skills">${tags.map((s) => `<li><span class="chip chip--sm">${esc(s.name)}</span></li>`).join("")}</ul>
-        <div class="foot"><span class="mono">${esc(p.year || "")}</span><span class="go">View case study ${icon("arrow_r", 14)}</span></div>
+    const f = (p.figures || [])[0];
+    const h = (p.highlights || [])[0];
+    const media = f
+      ? `<span class="pcard__media"><img src="${esc(f.src)}" alt="" width="${f.w}" height="${f.h}" loading="lazy" decoding="async"></span>`
+      : `<span class="pcard__media pcard__media--stat" aria-hidden="true">${h ? `<strong>${esc(h.value)}</strong><span>${esc(h.label)}</span>` : ""}</span>`;
+    return `<a class="pcard" href="project.html?id=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">
+        ${media}
+        <span class="pcard__body">
+          <span class="pcard__k">${esc(window.PF.projectMeta(p))}</span>
+          <h3>${esc(p.title)}</h3>
+          <span class="sum">${esc(p.summary || "")}</span>
+          ${h ? `<span class="pcard__r"><strong>${esc(h.value)}</strong> ${esc(h.label)}</span>` : ""}
+          <ul class="chips" aria-label="Skills">${tags.map((s) => `<li><span class="chip chip--sm">${esc(s.name)}</span></li>`).join("")}</ul>
+          <span class="foot"><span class="go">Explore project ${icon("arrow_r", 14)}</span></span>
+        </span>
       </a>`;
   }
 
   function render() {
-    const list = projects.filter(matches);
+    const list = window.PF.projectOrder(projects.filter(matches));
     const feat = list.filter((p) => p.featured);
     const arch = list.filter((p) => !p.featured);
     $("featured").innerHTML = feat.map(card).join("");
     $("featured-wrap").hidden = !feat.length;
-    $("archive").innerHTML = arch.map((p) => `<li><a href="project.html?id=${encodeURIComponent(p.id)}">
+    $("archive").innerHTML = arch.map((p) => `<li><a href="project.html?id=${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">
         <span><strong>${esc(p.title)}</strong><span class="s">${esc([p.subtitle, p.year].filter(Boolean).join(" · "))}</span></span>${icon("chev_r", 16)}</a></li>`).join("");
     $("archive-wrap").hidden = !arch.length;
     const filtered = state.q || state.category || state.skill;

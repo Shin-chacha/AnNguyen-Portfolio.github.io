@@ -250,7 +250,6 @@
   }
 
   function relatedOf(s) {
-    if (s.level === 2 && s.children.length) return s.children.map((id) => skills[id]);
     if (s.level === 3) return [skills[s.parentId]].concat(skills[s.parentId].children.filter((id) => id !== s.id).map((id) => skills[id]));
     return cats[s.catId].capabilities.map((c) => skills[c.id]).filter((x) => x.id !== s.id);
   }
@@ -267,24 +266,29 @@
   function drawerHTML(s) {
     const cat = cats[s.catId];
     const ev = s.ev.map((id) => evById[id]);
-    const work = ev.filter((e) => WORK.includes(e.type));
+    const projs = window.PF.projectOrder(ev.filter((e) => e.type === "project"));
+    const work = ev.filter((e) => WORK.includes(e.type) && e.type !== "project");
     const groups = [["award", "Awards"], ["certification", "Certifications"], ["course", "Coursework"]];
-    const nProj = window.PF.projects.filter((p) => (p.skills || []).includes(s.id)).length;
     const pillCls = s.status === "Proven" ? "pill--proven" : s.status === "Learning" ? "pill--learning" : "";
     const rel = relatedOf(s);
+    const MAX = 3;
     return `
       <div class="sheet-handle" aria-hidden="true"></div>
       <div class="drawer__top">
-        <p class="kicker">Skill · ${esc(cat.name)}</p>
+        <p class="kicker">Skill evidence · ${esc(cat.name)}</p>
         <button type="button" class="icon-btn" data-close aria-label="Close details">${icon("close", 18)}</button>
       </div>
       <h2 id="drawer-title">${esc(s.name)}</h2>
-      <div class="drawer__status"><span class="pill ${pillCls}">${s.status}</span><span class="rank rank--${s.status.toLowerCase()}">${pipsHTML(s)}${RANK[s.status]}</span><span>${ev.length} evidence item${ev.length === 1 ? "" : "s"}</span></div>
-      <p class="quest">${icon(s.status === "Proven" ? "star" : s.status === "Learning" ? "lock" : "flag", 14)}<span>${questText(s)}</span></p>
+      <div class="drawer__status"><span class="pill ${pillCls}">${s.status}</span><span class="rank rank--${s.status.toLowerCase()}">${pipsHTML(s)}${RANK[s.status]}</span><span>${projs.length} project${projs.length === 1 ? "" : "s"}</span></div>
       ${s.description ? `<p class="drawer__desc">${esc(s.description)}</p>` : ""}
-      <hr>
-      ${ev.length === 0 ? `<p class="empty">No evidence yet. This skill is on the learning plan.</p>` : ""}
-      ${work.length ? `<h3>Featured evidence <small>${work.length}</small></h3>${work.map(evItem).join("")}` : ""}
+      ${s.children && s.children.length ? `<ul class="chips drawer__subs" aria-label="Includes">${s.children.map((id) =>
+        `<li><button type="button" class="chip chip--sm" data-open="${id}">${esc(skills[id].name)}</button></li>`).join("")}</ul>` : ""}
+      <p class="quest">${icon(s.status === "Proven" ? "star" : s.status === "Learning" ? "lock" : "flag", 14)}<span>${questText(s)}</span></p>
+      ${projs.length ? `<h3>Related project evidence <small>${projs.length}</small></h3>
+        <div class="pj-list">${projs.slice(0, MAX).map(window.PF.projectCardHTML).join("")}</div>
+        <a class="btn btn--ghost btn--block" href="projects.html?skill=${encodeURIComponent(s.id)}">View all ${projs.length} project${projs.length === 1 ? "" : "s"} using ${esc(s.name)} ${icon("arrow_r", 16)}</a>`
+        : `<p class="empty">No project evidence yet. This skill is on the learning plan.</p>`}
+      ${work.length ? `<h3>Roles &amp; competitions</h3>${work.map(evItem).join("")}` : ""}
       ${groups.map(([type, label]) => {
         const list = ev.filter((e) => e.type === type);
         return list.length ? `<h3>${label}</h3><ul class="ev-list">${list.map((e) =>
@@ -292,11 +296,10 @@
       }).join("")}
       ${rel.length ? `<h3>Related skills</h3><ul class="chips">${rel.map((r) =>
         `<li><button type="button" class="chip chip--sm" data-open="${r.id}">${esc(r.name)}</button></li>`).join("")}</ul>` : ""}
-      <div class="note"><p class="kicker">How ranks are set</p>
+      <details class="note"><summary class="kicker">How ranks are set</summary>
         <p>Locked · Learning: on the learning plan, no project evidence yet.</p>
         <p>Unlocked · Applied: used in at least one project, role or competition.</p>
-        <p>Mastered · Proven: repeated evidence that I can rebuild without help.</p></div>
-      ${nProj ? `<a class="btn btn--primary btn--block" href="projects.html?skill=${encodeURIComponent(s.id)}">View ${nProj} project${nProj === 1 ? "" : "s"} using ${esc(s.name)} ${icon("arrow_r", 16)}</a>` : ""}`;
+        <p>Mastered · Proven: repeated evidence that I can rebuild without help.</p></details>`;
   }
 
   function setUrlSkill(id) {

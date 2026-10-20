@@ -1,8 +1,9 @@
 /* Project case-study page: project.html?id=<project id from data.js>.
+   Same STAR + figures body as the preview (preview.js), then the full method write-up.
    Sections with no content in data.js are hidden automatically. */
 (function () {
   "use strict";
-  const { P, icon, esc, projects, projectSkills, params } = window.PF;
+  const { P, esc, projects, params } = window.PF;
   window.PF.renderHeader("projects");
   window.PF.renderFooter();
 
@@ -25,36 +26,27 @@
     if (!items.length) return "";
     return `<section><h2>${title}</h2>${items.length === 1 ? `<p>${esc(items[0])}</p>` : `<ul class="list">${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`}</section>`;
   };
-  const sk = projectSkills(p);
-  const others = projects.filter((x) => x.id !== p.id && x.featured).slice(0, 3);
+  const others = window.PF.projectOrder(projects.filter((x) => x.id !== p.id && x.featured)).slice(0, 3);
+  const details = [section("Problem", p.problem), section("Data", p.data), section("Method", p.method),
+    section("Result", p.result), section("Limitations", p.limitations), section("What I learned", p.learned)].join("");
 
   el.innerHTML = `
     <div class="case">
       <article>
-        <p class="kicker">Project · ${esc(catNames.join(" · "))} · ${esc(p.year || "")}</p>
+        <p class="kicker">${esc(window.PF.projectMeta(p))}</p>
         <h1>${esc(p.title)}</h1>
         <p class="lead">${esc(p.summary || "")}</p>
-        ${asList(p.links).length ? `<div class="links">${p.links.map((l, i) =>
-          `<a class="btn ${i === 0 ? "btn--primary" : "btn--ghost"}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${icon("ext", 14)}</a>`).join("")}</div>` : ""}
-        ${section("Problem", p.problem)}
-        ${section("Data", p.data)}
-        ${section("Method", p.method)}
-        ${section("Result", p.result)}
-        ${section("My contribution", p.contribution)}
-        ${section("Limitations", p.limitations)}
-        ${section("What I learned", p.learned)}
+        <div class="case__body">${window.PF.projectBodyHTML(p, { ctaTop: true })}</div>
+        ${details ? `<details class="case__more" open><summary>Method and full details</summary>${details}</details>` : ""}
       </article>
       <aside class="aside">
-        <div class="card">
-          <h2>Skills used</h2>
-          <ul class="chips">${sk.map((s) => `<li><a class="chip" href="index.html?skill=${encodeURIComponent(s.id)}#map">${esc(s.name)}</a></li>`).join("")}</ul>
-        </div>
         <div class="card">
           <h2>Details</h2>
           <dl>
             <dt>Year</dt><dd>${esc(p.year || "—")}</dd>
             <dt>Type</dt><dd>${esc(p.subtitle || "—")}</dd>
             <dt>Area</dt><dd>${esc(catNames.join(", ") || "—")}</dd>
+            ${p.role ? `<dt>Role</dt><dd>${esc(p.role)}</dd>` : ""}
           </dl>
         </div>
         ${others.length ? `<div class="card"><h2>More projects</h2><ul class="ev-list" style="margin-top:4px">${others.map((o) =>

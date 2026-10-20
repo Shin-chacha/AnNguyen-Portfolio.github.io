@@ -95,6 +95,50 @@ window.PORTFOLIO = {
       links: [
         { label: "Notebook and analysis files", url: "https://drive.google.com/drive/folders/1TZCRWXPbtYixXc6h3eLPwQMTbYHOJb5o?usp=sharing" }
       ],
+      role: "",
+      star: {
+        "situation": "A UK consumer lender (coursework case) saw defaults rise from 7% to over 10%, about £4.2M of unexpected losses, while still using a five-year-old rules-based scorecard.",
+        "task": "Build a probability-of-default model that cuts expected loss by at least 25% at a 70% approval rate, and explain it to a non-technical risk committee.",
+        "action": "Cleaned and joined four tables, engineered WoE and ratio features without leakage, compared L1 logistic regression with a Random Forest, then checked calibration, SHAP explanations and regional fairness.",
+        "result": "Recommended the logistic model (Gini 0.664, Brier 0.074). On validation data, a 70% approval policy cuts modelled expected loss by 77.7%, from £2.38M to £0.53M."
+      },
+      highlights: [
+        {
+          "value": "77.7%",
+          "label": "modelled cut in expected loss at 70% approval"
+        },
+        {
+          "value": "0.664",
+          "label": "validation Gini (AUC 0.832)"
+        },
+        {
+          "value": "9,999",
+          "label": "loan applications modelled"
+        }
+      ],
+      figures: [
+        {
+          "src": "assets/projects/credit-risk/roc-gini.webp",
+          "w": 790,
+          "h": 590,
+          "alt": "ROC curves on the validation set: logistic regression Gini 0.664 and Random Forest Gini 0.657, both well above the random baseline.",
+          "caption": "The simpler, explainable logistic model edges the Random Forest on ranking power, so it was the one recommended."
+        },
+        {
+          "src": "assets/projects/credit-risk/calibration.webp",
+          "w": 790,
+          "h": 590,
+          "alt": "Calibration plot: predicted default probabilities track observed default rates closely, with a Brier score of 0.0737.",
+          "caption": "Predicted probabilities line up with observed default rates, so the scores can support pricing and limits, not just ranking."
+        },
+        {
+          "src": "assets/projects/credit-risk/top-features.webp",
+          "w": 990,
+          "h": 790,
+          "alt": "Bar chart of the 20 largest absolute coefficients, led by employment status, loan amount, credit utilisation, interest rate and credit score.",
+          "caption": "Employment status, loan size, utilisation and credit score drive the score: drivers a credit committee can sanity-check."
+        }
+      ],
       skills: ["da", "py", "pd", "sk", "stat", "ml", "cls", "eval", "xai", "shap"]
     },
     {
@@ -129,8 +173,53 @@ window.PORTFOLIO = {
       ],
       learned: [],
       links: [
-        { label: "Power BI report and slides", url: "https://drive.google.com/drive/folders/1D21GyHvmCJ1FEB68dsPvljFtZD31VJuu?usp=sharing" },
-        { label: "Analysis files", url: "https://drive.google.com/drive/folders/1Csgp3QMVk0j8Kxi9D9zvR98xEciw2HL-?usp=sharing" }
+        { label: "Slide deck (PDF, 20 slides)", url: "https://drive.google.com/file/d/1bxbpknF946R55amaD_bG9Gt5sk6G1hMR/view" },
+        { label: "Power BI report folder", url: "https://drive.google.com/drive/folders/1D21GyHvmCJ1FEB68dsPvljFtZD31VJuu?usp=sharing" },
+        { label: "Delivery-model files", url: "https://drive.google.com/drive/folders/1Csgp3QMVk0j8Kxi9D9zvR98xEciw2HL-?usp=sharing" }
+      ],
+      role: "Team of 3",
+      star: {
+        "situation": "A marketplace's order growth had plateaued after early expansion, with flat order values, high freight costs and persistent delivery delays.",
+        "task": "Find what was holding growth back across business, logistics and marketing, and decide where to act first.",
+        "action": "Built a Power BI performance report, a leakage-free delivery-time model in Python and a seller segmentation, then ranked three logistics fixes with a weighted decision matrix.",
+        "result": "Showed last-mile delivery, not sellers, was the bottleneck. The delivery-time model's error is about 7.56 days, and predictive delivery estimates ranked first (49 against 33 and 30)."
+      },
+      highlights: [
+        {
+          "value": "7.56 days",
+          "label": "delivery-time error (MAE), known-at-purchase data only"
+        },
+        {
+          "value": "49 vs 33 / 30",
+          "label": "decision-matrix score for the ETA fix"
+        },
+        {
+          "value": "10.5%",
+          "label": "of seller leads converted"
+        }
+      ],
+      figures: [
+        {
+          "src": "assets/projects/ecommerce/last-mile-delivery.webp",
+          "w": 1600,
+          "h": 620,
+          "alt": "Two Power BI charts: average seller handling time falls from 771 hours at launch to about 50–90 hours, while last-mile delivery time stays at roughly 6–13 days.",
+          "caption": "Seller handover delays vanished within a month of launch, but last-mile delivery stayed slow, so the fix belongs in logistics."
+        },
+        {
+          "src": "assets/projects/ecommerce/eta-predictions.webp",
+          "w": 1020,
+          "h": 702,
+          "alt": "Line chart of actual against predicted delivery days on the test set, with a 95% prediction interval.",
+          "caption": "Predictions use only what is known at purchase, so the roughly one-week error is a realistic, deployable baseline."
+        },
+        {
+          "src": "assets/projects/ecommerce/decision-matrix.webp",
+          "w": 1400,
+          "h": 555,
+          "alt": "Weighted decision matrix scoring three logistics initiatives on impact, feasibility, time to value and complexity: Rec A 49, Rec B 33, Rec C 30.",
+          "caption": "Predictive delivery estimates (Rec A) win on impact, feasibility and speed to value, so they come first."
+        }
       ],
       skills: ["da", "bi", "pbi", "dash", "kpi", "py", "pd", "sk", "ml", "reg", "eval", "ps"]
     },
@@ -154,14 +243,59 @@ window.PORTFOLIO = {
       result: [
         "Services generate 37.2% of gross profit from 10.1% of revenue, pointing to after-sales productivity over showroom growth.",
         "Value per share moved from VND 22,918 to VND 17,855 after the Q1 reforecast.",
-        "Set service-margin thresholds (above 24% / below 21%) that would change the recommendation."
+        "Set service-margin thresholds (above 24% / below 21%) that would change the recommendation.",
+        "Rated HOLD with a VND 17,900 target price (+2.6%), with very low confidence because most value sits beyond FY2030."
       ],
       contribution: [],
       limitations: [],
       learned: [],
       links: [
-        { label: "Valuation analysis", url: "https://drive.google.com/drive/folders/1tahxT1oXS56IBmr47B9q4Ls8KwOElNh8?usp=drive_link" },
-        { label: "Business analysis report", url: "https://drive.google.com/file/d/1QK6RoujLzNLbmB-PcGvT9Li62DlKkRKx/view?usp=sharing" }
+        { label: "Fundamental analysis report (PDF, 27 pages)", url: "https://drive.google.com/file/d/1QK6RoujLzNLbmB-PcGvT9Li62DlKkRKx/view?usp=sharing" },
+        { label: "Project folder", url: "https://drive.google.com/drive/folders/1tahxT1oXS56IBmr47B9q4Ls8KwOElNh8?usp=drive_link" }
+      ],
+      role: "",
+      star: {
+        "situation": "SVC, a Vietnamese car dealer, had underperformed the VN-Index by 61 points over five years, and its FY2025 profit rested on a one-off disposal gain.",
+        "task": "Value the equity on recurring economics and find which operating assumptions decide the rating.",
+        "action": "Built driver-based FY2026E–FY2030E forecasts and a two-stage FCFE model, reforecast after Q1 2026 actuals, and tested one input at a time.",
+        "result": "Rated HOLD at VND 17,855 per share (target 17,900), down from 22,918 before the Q1 update. A ±100bp move in service margin is worth about ±VND 9,000 per share."
+      },
+      highlights: [
+        {
+          "value": "37.2%",
+          "label": "of gross profit from 10.1% of revenue"
+        },
+        {
+          "value": "VND 17,855",
+          "label": "value per share · HOLD"
+        },
+        {
+          "value": "±9,000",
+          "label": "VND per share for ±100bp service margin"
+        }
+      ],
+      figures: [
+        {
+          "src": "assets/projects/svc-valuation/services-gross-profit.webp",
+          "w": 1078,
+          "h": 482,
+          "alt": "Bar charts: services are 10% of FY2025 revenue but 37% of gross profit; service gross margin is 25.1% against 4.4% on vehicles.",
+          "caption": "Services earn 5.8× the margin of vehicle sales, so a tenth of revenue delivers over a third of gross profit."
+        },
+        {
+          "src": "assets/projects/svc-valuation/value-sensitivity.webp",
+          "w": 1094,
+          "h": 598,
+          "alt": "Tornado chart of FCFE value per share when one input changes: service growth +200bp gives VND 30,520, the central case 17,860, and a 7.01% borrowing rate takes value below zero.",
+          "caption": "Changing one input at a time moves value from below zero to about VND 30,500 per share, so the rating carries very low confidence."
+        },
+        {
+          "src": "assets/projects/svc-valuation/value-bridge.webp",
+          "w": 918,
+          "h": 769,
+          "alt": "Waterfall from the original forecast of VND 22,918 to the analyst base case of VND 17,855 per share, via Q1 2026 revenue, margin and receivable updates.",
+          "caption": "Updating for Q1 2026 actuals moved the estimate from VND 22,918 to 17,855 and removed most of the apparent mispricing."
+        }
       ],
       skills: ["xl", "fa", "fs", "wc", "fc", "scen", "val", "fcfe"]
     },
@@ -199,7 +333,52 @@ window.PORTFOLIO = {
       ],
       learned: [],
       links: [
-        { label: "Report and working sheet", url: "https://drive.google.com/drive/folders/1SRjhDaoknyNc27-bKVdfF1l_uicVi6ol?usp=drive_link" }
+        { label: "Equity research report (PDF, 59 pages)", url: "https://drive.google.com/file/d/1H9ntvzQ1Mq6-x_40WGKn-MDBw2g_oM8F/view" },
+        { label: "Report and Excel working sheet", url: "https://drive.google.com/drive/folders/1SRjhDaoknyNc27-bKVdfF1l_uicVi6ol?usp=drive_link" }
+      ],
+      role: "Individual assignment",
+      star: {
+        "situation": "FPT had compounded revenue at 18.4% a year, yet by late 2025 its share price sat about 28% below its peak, leaving the investment case unclear.",
+        "task": "Forecast FPT's earnings, value the shares and decide whether, and at what price, to buy.",
+        "action": "Forecast Technology and Education revenue separately after FOX left the group, estimated a 9.77% cost of equity with CAPM, ran a two-stage DDM with sensitivity tests and compared risk-adjusted returns with the VN-Index.",
+        "result": "Base-case value of VND 60,475 per share. Recommended Selective BUY/Accumulate with a VND 88,000–98,000 target band and a VND 64,000 stop-loss (3.0–4.7× reward-to-risk)."
+      },
+      highlights: [
+        {
+          "value": "24.5%",
+          "label": "a year for FPT vs 6.2% for the VN-Index (2018–2025)"
+        },
+        {
+          "value": "VND 60,475",
+          "label": "base-case DDM value per share"
+        },
+        {
+          "value": "88–98k",
+          "label": "VND target band · stop 64k"
+        }
+      ],
+      figures: [
+        {
+          "src": "assets/projects/fpt-equity/sensitivity-grid.webp",
+          "w": 1400,
+          "h": 253,
+          "alt": "Sensitivity table of implied share price by cost of equity (9.77% to 15%) and terminal growth (4% to 8%); the base case of VND 60,475 is highlighted.",
+          "caption": "At a 9.77% cost of equity, moving terminal growth from 5% to 7% lifts the value from VND 60,475 to 98,456, which is where the target band comes from."
+        },
+        {
+          "src": "assets/projects/fpt-equity/fpt-vs-vnindex.webp",
+          "w": 1400,
+          "h": 718,
+          "alt": "Cumulative price index from January 2018: FPT rises to about 5.6 times its starting level against 1.6 times for the VN-Index.",
+          "caption": "FPT compounded far ahead of the market (24.5% against 6.2% a year) with only moderately higher volatility."
+        },
+        {
+          "src": "assets/projects/fpt-equity/technical-entry.webp",
+          "w": 1400,
+          "h": 895,
+          "alt": "TradingView weekly chart of FPT marking a support zone around VND 65,000–70,000 with an entry, stop and profit target.",
+          "caption": "The chart sets entry timing only; the report's plan is a stop at VND 64,000 and a target band of 88,000–98,000."
+        }
       ],
       skills: ["xl", "fa", "fs", "fc", "scen", "val", "ddm", "inv", "risk"]
     },
@@ -237,7 +416,52 @@ window.PORTFOLIO = {
       ],
       learned: [],
       links: [
-        { label: "Portfolio report", url: "https://drive.google.com/drive/folders/1YrFwnOL0CixLHb8CvCR-3Og7uxgGdqjt?usp=drive_link" }
+        { label: "Portfolio report (PDF, 95 pages)", url: "https://drive.google.com/file/d/1z2q5bVpsY57GfU6kj_MJXiHgM8ZsmCFu/view" },
+        { label: "Project folder", url: "https://drive.google.com/drive/folders/1YrFwnOL0CixLHb8CvCR-3Og7uxgGdqjt?usp=drive_link" }
+      ],
+      role: "Solo project",
+      star: {
+        "situation": "The mandate: three Vietnamese equity portfolios of VND 100 billion each, one passive and two active, judged against the MRP-20 benchmark within strict sector, liquidity and concentration limits.",
+        "task": "Design a repeatable selection process and test whether the active portfolios beat the benchmark.",
+        "action": "Ran a nine-stage funnel (eligibility, macro gate, industry and company scoring, technical entry, mandate sizing) from 30 VN30 stocks to 8–9 holdings, then measured return, risk and attribution in LSEG.",
+        "result": "Active Portfolio 2 beat the benchmark by 1.15 percentage points (−1.25% against −2.40%), mostly through sector allocation. Active Portfolio 1 trailed by 0.74 points, and both missed the 90% invested floor."
+      },
+      highlights: [
+        {
+          "value": "+1.15 pp",
+          "label": "Active Portfolio 2 against the MRP-20"
+        },
+        {
+          "value": "12 of 19",
+          "label": "candidates passed the fundamental gate"
+        },
+        {
+          "value": "3 × VND 100bn",
+          "label": "portfolios built and evaluated"
+        }
+      ],
+      figures: [
+        {
+          "src": "assets/projects/vn30-portfolio/ap2-vs-benchmark.webp",
+          "w": 1099,
+          "h": 418,
+          "alt": "Line chart of cumulative return from 25 August to 11 September 2026: Active Portfolio 2 ends at −1.26% against −2.40% for the MRP-20 reference.",
+          "caption": "Active Portfolio 2 lost less than the market over its window: a +1.15-point active return."
+        },
+        {
+          "src": "assets/projects/vn30-portfolio/nine-stage-process.webp",
+          "w": 1211,
+          "h": 628,
+          "alt": "Flow of the nine-stage process: eligibility (27 securities), economy gate (27), industry ranking (19), company selection, then implementation (8–10 holdings).",
+          "caption": "Each stage hands a smaller, documented pool to the next, and no later stage can readmit a stock."
+        },
+        {
+          "src": "assets/projects/vn30-portfolio/candidate-scores.webp",
+          "w": 977,
+          "h": 601,
+          "alt": "Dot chart of fundamental composite scores for 19 candidates against a 3.00 gate; HPG is highest at 3.92 and STB lowest at 1.27.",
+          "caption": "Twelve of nineteen candidates cleared the 3.00 gate, but the three-bank limit, not the scores, decided the final holdings."
+        }
       ],
       skills: ["xl", "inv", "port", "risk", "fa", "val", "ps"]
     },
@@ -275,6 +499,28 @@ window.PORTFOLIO = {
       links: [
         { label: "Research report", url: "https://docs.google.com/document/d/1IO6zMxTMOcMHNuawFrL7iklzQyXuJW5W/edit?usp=sharing" }
       ],
+      role: "",
+      star: {
+        "situation": "Female labour-force participation varies widely across lower-income countries, and policymakers need to know which levers actually matter.",
+        "task": "Identify the social and economic drivers of participation and test whether urbanisation's effect depends on education.",
+        "action": "Built a multiple regression on 2022 World Bank data for 59 countries in RStudio, with a squared wage term and an interaction, and ran VIF, RESET, Breusch-Pagan, White and robustness checks.",
+        "result": "Fertility (−8.4 points per extra birth) and anti-discrimination laws (+13.9 points) were the strongest significant drivers; the model explains 57% of the variation (adjusted R² 0.51)."
+      },
+      highlights: [
+        {
+          "value": "−8.4 pts",
+          "label": "participation per extra point of fertility"
+        },
+        {
+          "value": "+13.9 pts",
+          "label": "with anti-discrimination laws"
+        },
+        {
+          "value": "R² 0.57",
+          "label": "59 countries, passes RESET and BP tests"
+        }
+      ],
+      figures: [],
       skills: ["stat", "econ", "rlang", "da"]
     },
 
@@ -312,7 +558,52 @@ window.PORTFOLIO = {
       ],
       learned: [],
       links: [
-        { label: "Competition report", url: "https://drive.google.com/drive/folders/1CKDd-J5icESeanT24GDzZuC9XvDQA3iA?usp=sharing" }
+        { label: "Competition report (PDF, 60 pages)", url: "https://drive.google.com/file/d/1VaRDL53-McpP1WANvd3WIAGDPMTUdomt/view" },
+        { label: "Project folder", url: "https://drive.google.com/drive/folders/1CKDd-J5icESeanT24GDzZuC9XvDQA3iA?usp=sharing" }
+      ],
+      role: "Team entry",
+      star: {
+        "situation": "HDBank's bad-loan ratio rose from 1.65% to 2.79% (Q1 2022–Q2 2026) while loan-loss coverage fell to 50%, as it grew agricultural lending with little view of farmers' cash flows.",
+        "task": "Design a lending model that lets HDBank see and control seasonal cash flows early, without slowing credit growth.",
+        "action": "Diagnosed the bank with a CAMEL review, scored four alternative designs on seven weighted criteria, mapped the chosen process in BPMN, and set pilot KPIs and risk mitigations.",
+        "result": "Recommended a multi-buyer, semi-closed value-chain model (94 against 75, 70 and 65), to start as a one-region pilot. Placed Top 15 in Future Business Analyst 2026."
+      },
+      highlights: [
+        {
+          "value": "Top 15",
+          "label": "Future Business Analyst 2026"
+        },
+        {
+          "value": "94 / 100",
+          "label": "weighted score of the recommended model"
+        },
+        {
+          "value": "2.79%",
+          "label": "HDBank NPL ratio, Q2 2026"
+        }
+      ],
+      figures: [
+        {
+          "src": "assets/projects/fba-hdbank/scorecard.webp",
+          "w": 1400,
+          "h": 724,
+          "alt": "Scoring table of four options on seven weighted criteria; the multi-buyer semi-closed model scores 94, ahead of 75, 70 and 65.",
+          "caption": "The recommended model wins because it controls both the loan money going out and the sales proceeds coming back."
+        },
+        {
+          "src": "assets/projects/fba-hdbank/bpmn-overview.webp",
+          "w": 1400,
+          "h": 2181,
+          "alt": "BPMN swimlane diagram of the end-to-end process across the farmer, HDBank, input supplier, B2B buyer and cooperative, from request to repayment.",
+          "caption": "Money and goods move on separate, verifiable paths: suppliers are paid directly, and buyers pay into the farmer's HDBank account."
+        },
+        {
+          "src": "assets/projects/fba-hdbank/npl-coverage.webp",
+          "w": 1600,
+          "h": 592,
+          "alt": "Bar and line chart of HDBank's NPL ratio rising from 1.65% in Q1 2022 to 2.79% in Q2 2026, with loan-loss reserves to NPLs.",
+          "caption": "The problem in one chart: bad loans have risen for four years while the buffer against them thinned."
+        }
       ],
       skills: ["ps", "bpmn", "fa", "scen", "kpi"]
     },

@@ -97,6 +97,32 @@ Sections you leave empty (`[]` or `""`) are hidden automatically. The project th
 Projects page, on its own case-study page, and in the drawer of every skill it lists.
 All the counts on the home page update by themselves.
 
+### Project evidence: STAR summary, key results and figures
+Clicking a skill opens its evidence drawer (up to three project cards), and each card opens a
+project preview with the STAR summary, key results, figures and the Drive link. Shareable link:
+`projects.html?project=<id>` or `index.html?project=<id>`. Add these fields to a project:
+
+```js
+role: "Team of 3",                       // shown under "My contribution"; leave "" if not stated
+star: {                                   // 20–40 words each
+  situation: "…", task: "…", action: "…", result: "…"
+},
+highlights: [                             // 2–3 headline numbers; the first one shows on cards
+  { value: "7.56 days", label: "delivery-time error (MAE)" }
+],
+figures: [                                // first = hero; up to two more supporting figures
+  { src: "assets/projects/ecommerce/last-mile-delivery.webp", w: 1600, h: 620,
+    alt: "What the chart shows, for screen readers",
+    caption: "The insight in one sentence, not the chart type." }
+],
+links: [{ label: "Slide deck (PDF, 20 slides)", url: "https://drive.google.com/file/d/…" }]
+```
+
+Figure rules: export the chart (not a whole page), save it as **WebP, about 1,200–1,600 px wide and
+under ~150 KB** in `assets/projects/<project id>/`, and write `w`/`h` (the pixel size) so the page
+doesn't jump while loading. The first link becomes the **View full analysis** button: point it at the
+main file, not a folder, and test it in a private window without signing in to Google.
+
 ### Add a certification, role, competition or course
 ```js
 { id: "cert-pl300", type: "certification", title: "Power BI Data Analyst (PL-300)", subtitle: "Microsoft", year: "2027", skills: ["pbi"] },
