@@ -27,7 +27,7 @@
     return `<section><h2>${title}</h2>${items.length === 1 ? `<p>${esc(items[0])}</p>` : `<ul class="list">${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`}</section>`;
   };
   const others = window.PF.projectOrder(projects.filter((x) => x.id !== p.id && x.featured)).slice(0, 3);
-  const details = [section("Problem", p.problem), section("Data", p.data), section("Method", p.method),
+  const details = p.layout === "strategy" ? "" : [section("Problem", p.problem), section("Data", p.data), section("Method", p.method),
     section("Result", p.result), section("Limitations", p.limitations), section("What I learned", p.learned)].join("");
 
   el.innerHTML = `

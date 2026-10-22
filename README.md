@@ -123,6 +123,31 @@ under ~150 KB** in `assets/projects/<project id>/`, and write `w`/`h` (the pixel
 doesn't jump while loading. The first link becomes the **View full analysis** button: point it at the
 main file, not a folder, and test it in a private window without signing in to Google.
 
+### Commercial-strategy projects (layout: "strategy")
+Set `layout: "strategy"` to show a project as: role banner → **Key strategic finding** → key points →
+01 Business problem · 02 Analytical approach · 03 Key figures (figure left, interpretation right) ·
+04 Recommendations & measurement · 05 My contribution & evidence. Extra fields:
+
+```js
+layout: "strategy",
+roleDetail: "My responsibilities: … (team projects: say what the wider team did)",
+finding: { title: "From product differentiation to visible proof", text: "…" },
+approach: ["Method 1", "Method 2"],
+recommendations: ["…"], measures: ["How success would be measured"],
+rigor: [["Supported finding", "Important limitation"]],     // optional table
+skillNotes: { seg: "One line on how this project used this skill" }, // shown in that skill's drawer
+figures: [{ src, w, h, alt, caption, insight: "Business interpretation shown beside the figure" }]
+```
+
+If `links` is empty, the preview shows **Request the full report** (an email link) instead of a broken button.
+
+### Recruiter views (Projects page)
+`views` near the bottom of `data.js` lists which projects to show first for each kind of role,
+e.g. `projects.html?view=fpa`. Edit the `projects` arrays to change the order.
+
+### Emerging capabilities
+Add `emerging: [{ name, note }]` to a capability to mention a skill in its drawer without adding a node.
+
 ### Add a certification, role, competition or course
 ```js
 { id: "cert-pl300", type: "certification", title: "Power BI Data Analyst (PL-300)", subtitle: "Microsoft", year: "2027", skills: ["pbi"] },

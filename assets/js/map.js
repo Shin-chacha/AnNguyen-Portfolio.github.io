@@ -21,7 +21,7 @@
     const pr = P.profile;
     $("hero-name").textContent = pr.name;
     $("hero-tag").textContent = pr.tagline;
-    $("hero-intro").textContent = pr.intro;
+    $("hero-intro").innerHTML = esc(pr.intro) + (pr.supporting ? `<span class="hero__support">${esc(pr.supporting)}</span>` : "");
     $("hero-actions").innerHTML = `
       <a class="btn btn--primary" href="#map">Explore skill tree ${icon("chev_d", 16)}</a>
       ${pr.cvUrl ? `<a class="btn btn--ghost" href="${esc(pr.cvUrl)}" target="_blank" rel="noopener">Download CV</a>` : ""}
@@ -284,8 +284,9 @@
       ${s.children && s.children.length ? `<ul class="chips drawer__subs" aria-label="Includes">${s.children.map((id) =>
         `<li><button type="button" class="chip chip--sm" data-open="${id}">${esc(skills[id].name)}</button></li>`).join("")}</ul>` : ""}
       <p class="quest">${icon(s.status === "Proven" ? "star" : s.status === "Learning" ? "lock" : "flag", 14)}<span>${questText(s)}</span></p>
+      ${(() => { const em = s.emerging || (s.parentId && skills[s.parentId].emerging) || []; return em.length ? `<div class="emerging"><p class="kicker">Emerging capability · not on the tree yet</p>${em.map((x) => `<p><strong>${esc(x.name)}</strong> · ${esc(x.note)}</p>`).join("")}</div>` : ""; })()}
       ${projs.length ? `<h3>Related project evidence <small>${projs.length}</small></h3>
-        <div class="pj-list">${projs.slice(0, MAX).map(window.PF.projectCardHTML).join("")}</div>
+        <div class="pj-list">${projs.slice(0, MAX).map((p) => window.PF.projectCardHTML(p, s.id)).join("")}</div>
         <a class="btn btn--ghost btn--block" href="projects.html?skill=${encodeURIComponent(s.id)}">View all ${projs.length} project${projs.length === 1 ? "" : "s"} using ${esc(s.name)} ${icon("arrow_r", 16)}</a>`
         : `<p class="empty">No project evidence yet. This skill is on the learning plan.</p>`}
       ${work.length ? `<h3>Roles &amp; competitions</h3>${work.map(evItem).join("")}` : ""}

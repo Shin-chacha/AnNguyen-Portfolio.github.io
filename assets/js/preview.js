@@ -24,9 +24,10 @@
   }
 
   /* compact card for the skill drawer: the whole card is one button */
-  PF.projectCardHTML = function (p) {
+  PF.projectCardHTML = function (p, skillId) {
     const f = figs(p)[0];
     const h = (p.highlights || [])[0];
+    const note = skillId && p.skillNotes && p.skillNotes[skillId];
     const thumb = f
       ? `<span class="pj__thumb">${imgTag(Object.assign({}, f, { alt: "" }))}</span>`
       : `<span class="pj__thumb pj__thumb--stat" aria-hidden="true">${h ? `<strong>${esc(h.value)}</strong><span>${esc(h.label)}</span>` : icon("doc", 28)}</span>`;
@@ -36,26 +37,73 @@
           <span class="pj__k">${esc(metaLine(p))}</span>
           <span class="pj__t">${esc(p.short || p.title)}</span>
           <span class="pj__d">${esc(p.subtitle || "")}</span>
-          ${h ? `<span class="pj__r"><strong>${esc(h.value)}</strong> ${esc(h.label)}</span>` : ""}
+          ${note ? `<span class="pj__n">${esc(note)}</span>` : h ? `<span class="pj__r"><strong>${esc(h.value)}</strong> ${esc(h.label)}</span>` : ""}
           <span class="pj__go">Explore project ${icon("arrow_r", 14)}</span>
         </span>
       </button>`;
   };
 
   /* figure with an enlarge button */
-  function figureHTML(p, f, i, cls) {
+  function figureHTML(p, f, i, cls, noCap) {
     return `<figure class="fig ${cls || ""}">
         <button type="button" class="fig__btn" data-fig="${i}" data-pid="${esc(p.id)}" aria-label="Enlarge figure ${i + 1}: ${esc(f.caption)}">
           ${imgTag(f, "", i === 0)}
           <span class="fig__zoom" aria-hidden="true">${icon("search", 16)}</span>
         </button>
-        <figcaption>${esc(f.caption)}</figcaption>
+        ${noCap ? "" : `<figcaption>${esc(f.caption)}</figcaption>`}
       </figure>`;
+  }
+
+  function ctaHTML(p, opts) {
+    const links = asList(p.links);
+    if (!links.length) {
+      const mail = `mailto:${P.profile.email}?subject=${encodeURIComponent("Request: " + (p.short || p.title))}`;
+      return `<div class="pv__cta">${opts.caseLink ? `<a class="btn btn--ghost" href="project.html?id=${encodeURIComponent(p.id)}">Full case study ${icon("arrow_r", 14)}</a>` : ""}
+          <a class="btn btn--ghost" href="${esc(mail)}">${icon("mail", 14)} Request the full report</a></div>
+        <p class="pv__note">The full report is not published online yet; a copy is available on request.</p>`;
+    }
+    return `<div class="pv__cta">
+        <a class="btn btn--primary" href="${esc(links[0].url)}" target="_blank" rel="noopener">View full analysis ${icon("ext", 14)}</a>
+        ${links.slice(1).map((l) => `<a class="btn btn--ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${icon("ext", 14)}</a>`).join("")}
+        ${opts.caseLink ? `<a class="btn btn--ghost" href="project.html?id=${encodeURIComponent(p.id)}">Full case study ${icon("arrow_r", 14)}</a>` : ""}
+      </div>
+      <p class="pv__note">${esc(links[0].label)} · opens on ${host(links[0].url)} in a new tab.</p>`;
+  }
+  const ul = (items) => items.length ? `<ul class="list">${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+  const chipsHTML = (p) => { const sk = projectSkills(p); return sk.length ? `<ul class="chips">${sk.map((s) =>
+    `<li><a class="chip chip--sm" href="index.html?skill=${encodeURIComponent(s.id)}#map">${esc(s.name)}</a></li>`).join("")}</ul>` : ""; };
+
+  /* Commercial-strategy layout: finding first, then 01–05 numbered sections,
+     figures on the left with their business interpretation on the right. */
+  function strategyBodyHTML(p, opts) {
+    const F = figs(p), star = p.star || {}, hl = p.highlights || [];
+    const step = (n, title, tag, body) => `<li class="step"><span class="step__n" aria-hidden="true">${n}</span><div class="step__b"><h3><span class="sr-only">${n}. </span>${title}</h3>${tag ? `<p class="step__tag">${tag}</p>` : ""}${body}</div></li>`;
+    const rigor = p.rigor || [];
+    return `
+      ${p.roleDetail ? `<div class="role-banner"><p class="kicker">My role · ${esc(p.role || "")}</p><p>${esc(p.roleDetail)}</p></div>` : ""}
+      ${p.finding ? `<div class="finding"><p class="kicker">Key strategic finding</p><h3>${esc(p.finding.title)}</h3><p>${esc(p.finding.text)}</p></div>` : ""}
+      ${hl.length ? `<ul class="hl" aria-label="Key points">${hl.map((h) => `<li><strong>${esc(h.value)}</strong><span>${esc(h.label)}</span></li>`).join("")}</ul>` : ""}
+      <ol class="steps">
+        ${step("01", "The business problem", "Situation · Task", `<p>${esc(star.situation || "")}</p><p>${esc(star.task || "")}</p>`)}
+        ${step("02", "Analytical approach", "Action", `<p>${esc(star.action || "")}</p>${ul(asList(p.approach))}`)}
+        ${F.length ? step("03", "Key figures", "", F.map((f, i) => `<div class="frow">${figureHTML(p, f, i, i === 0 ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
+        ${step("04", "Recommendations &amp; measurement", "Result", `<p>${esc(star.result || "")}</p>
+            ${asList(p.recommendations).length ? `<h4>Recommendations</h4>${ul(asList(p.recommendations))}` : ""}
+            ${asList(p.measures).length ? `<h4>How success would be measured</h4>${ul(asList(p.measures))}` : ""}
+            ${rigor.length ? `<h4>Analytical rigour: what the data can and cannot prove</h4>
+              <div class="rigor" role="table" aria-label="Supported findings and their limitations">
+                <div class="rigor__row rigor__head" role="row"><span role="columnheader">Supported finding</span><span role="columnheader">Important limitation</span></div>
+                ${rigor.map(([a, b]) => `<div class="rigor__row" role="row"><span role="cell">${esc(a)}</span><span role="cell">${esc(b)}</span></div>`).join("")}
+              </div>` : ""}
+            ${asList(p.limitations).length ? `<h4>Assumptions and limitations</h4>${ul(asList(p.limitations))}` : ""}`)}
+        ${step("05", "My contribution &amp; evidence", p.role ? esc(p.role) : "", `${ul(asList(p.contribution))}<h4>Skills applied</h4>${chipsHTML(p)}${ctaHTML(p, opts)}`)}
+      </ol>`;
   }
 
   /* the shared STAR + evidence body */
   PF.projectBodyHTML = function (p, opts) {
     opts = opts || {};
+    if (p.layout === "strategy") return strategyBodyHTML(p, opts);
     const F = figs(p);
     const hl = p.highlights || [];
     const star = p.star || {};

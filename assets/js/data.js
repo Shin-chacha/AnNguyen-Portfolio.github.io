@@ -27,6 +27,7 @@ window.PORTFOLIO = {
     initials: "AN",
     tagline: "Finance × Data",
     intro: "I use analytics to understand business performance, risk and financial decisions.",
+    supporting: "Applying analytical thinking across financial performance, consumer behaviour and commercial strategy.",
     location: "Ho Chi Minh City, Vietnam",
     email: "antthkdhg@gmail.com",
     linkedin: "https://www.linkedin.com/in/ann-nguyen-a4802a245",
@@ -50,7 +51,8 @@ window.PORTFOLIO = {
     { id: "finance", name: "Finance" },
     { id: "analytics", name: "Data Analytics" },
     { id: "ml", name: "Machine Learning" },
-    { id: "business", name: "Business" }
+    { id: "business", name: "Business" },
+    { id: "commercial", name: "Commercial Strategy" }
   ],
 
   /* ------------------------------------------------------------ evidence
@@ -608,6 +610,251 @@ window.PORTFOLIO = {
       skills: ["ps", "bpmn", "fa", "scen", "kpi"]
     },
 
+    {
+      "id": "vinamilk-green-farm",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "Vinamilk Green Farm: Segmentation, Positioning & Commercial Strategy",
+      "short": "Vinamilk Green Farm",
+      "subtitle": "Consumer insights · Positioning · Strategy",
+      "year": "2026",
+      "categories": [
+        "commercial",
+        "business"
+      ],
+      "role": "Individual project",
+      "roleDetail": "Sole author: research, segmentation, positioning map, recommendations and roadmap. MKTG1205 Marketing Principles, RMIT.",
+      "summary": "Benefit-based segmentation and a price–benefit–proof positioning map that show Green Farm's real gap is proof visibility, with a stage-gated plan to fix it.",
+      "finding": {
+        "title": "From product differentiation to visible proof",
+        "text": "Green Farm is operationally differentiated but only partly segment-differentiated: the binding constraint is translation, not capability. Communicate different benefits to family and wellness buyers, and make the evidence visible at the point of purchase."
+      },
+      "highlights": [
+        {
+          "value": "2 segments",
+          "label": "family reassurance and functional wellness"
+        },
+        {
+          "value": "121–162",
+          "label": "premium price index vs mainstream milk (= 100)"
+        },
+        {
+          "value": "VND 10–14bn",
+          "label": "proposed, released stage by stage over 12–18 months"
+        }
+      ],
+      "star": {
+        "situation": "Vietnam's premium milk market is crowded with converging functional claims (A2, high protein, fortification), and consumers increasingly want proof before paying a premium.",
+        "task": "Identify which customers Green Farm should target, test how differentiated it really is, and recommend a clearer strategy without adding SKUs.",
+        "action": "Built a benefit-based segmentation, a competitor claim-parity matrix and a price–benefit–proof positioning map, then designed Benefit Pathways, a QR Proof Passport and a stage-gated rollout.",
+        "result": "Showed the gap is proof visibility, not product specificity. Proposed two Benefit Pathways, a Proof Passport journey and a 12–18-month plan with budget released only as each gate is passed."
+      },
+      "approach": [
+        "Behavioural segmentation by benefits sought, checked against Kotler and Armstrong's effective-segmentation tests",
+        "Competitor claim-parity matrix across leading premium and functional fresh-milk SKUs",
+        "Positioning map of normalised shelf price, benefit specificity and proof visibility",
+        "Google Trends benefit-salience index for Vietnam (January 2024 to August 2026)",
+        "Evidence classification: observed outcome, commercial proxy or managerial inference"
+      ],
+      "recommendations": [
+        "Benefit Pathways: regroup the existing range into Verified Everyday Reassurance for families and Functional Precision for wellness adults, with no new SKUs.",
+        "Proof Passport: a QR-linked mobile-web journey from consumer outcome to product proof, process and origin proof, then SKU comparison.",
+        "Stage-gated rollout: a Hanoi and HCMC pilot first; national scale only if the gates are met."
+      ],
+      "measures": [
+        "Benefit recall and correct segment-to-SKU matching",
+        "Trial conversion and repeat purchase, net of cannibalisation",
+        "Proof Passport scan rate, journey completion and comprehension",
+        "Zero material certification, health-claim or privacy failures"
+      ],
+      "rigor": [
+        [
+          "Green Farm household penetration rose 2 points in a year, and 96% of its buyers were classified loyal",
+          "Measured at brand level, not split by product variant"
+        ],
+        [
+          "Green Farm revenue grew 109% in 2024, and the new line 225% year on year in 10M 2025",
+          "Growth cannot be allocated exactly to either benefit pathway"
+        ],
+        [
+          "Premium SKUs carry shelf-price indices of 121–162 against mainstream milk",
+          "A price premium is not a contribution margin; A2 input costs may absorb it"
+        ],
+        [
+          "Functional-benefit searches rose 154% while reassurance searches fell 10% (2024–2026)",
+          "Search users are not a representative sample, so this shows salience, not awareness"
+        ],
+        [
+          "A stage-gated pilot can be designed and measured",
+          "No commercial improvement from the proposal has been observed yet"
+        ]
+      ],
+      "contribution": [
+        "Built the Google Trends salience index and the evidence-classification appendix.",
+        "A Proof Passport prototype was built for the report; it is not published here."
+      ],
+      "limitations": [
+        "Segment market share and profitability cannot be calculated from public data, so the report claims premiumisation potential rather than superior profitability.",
+        "Budgets are indicative author estimates, not company figures."
+      ],
+      "links": [],
+      "figures": [
+        {
+          "src": "assets/projects/vinamilk-green-farm/positioning-map.webp",
+          "w": 1000,
+          "h": 648,
+          "alt": "Positioning map of price premium (index 100–180) against benefit specificity, with proof visibility shown by marker fill. Green Farm A2 and TH true MILK A2 overlap; Green Farm High-Protein sits alone at the top.",
+          "caption": "Green Farm A2 and TH A2 converge on both specificity and proof; only High Protein holds an uncontested position.",
+          "insight": "The map compares normalised price, benefit specificity and proof visibility for each SKU. It shows the problem is not too little product specificity but too little visible proof at contested premium positions."
+        },
+        {
+          "src": "assets/projects/vinamilk-green-farm/proof-passport.webp",
+          "w": 1382,
+          "h": 631,
+          "alt": "Five mobile screens of the proposed Proof Passport: scan the carton, see the benefit, verify product information, trace farm to pack, then compare and choose.",
+          "caption": "A five-step mobile-web journey turns the proof gap into something a shopper can check in the aisle.",
+          "insight": "The journey runs from consumer outcome to product proof, then process and origin proof, then SKU comparison. Mobile web avoids the friction of an app, and success is measured by scan rate, completion, comprehension and repeat purchase."
+        },
+        {
+          "src": "assets/projects/vinamilk-green-farm/stage-gate-roadmap.webp",
+          "w": 1510,
+          "h": 707,
+          "alt": "Five-stage roadmap from July 2026 to December 2027: evidence validation, architecture and MVP, controlled pilot, optimisation and conditional scale, each with a decision gate and a budget release of VND 1–7.5bn.",
+          "caption": "Budget is released stage by stage, and each stage must pass its gate before the next is funded.",
+          "insight": "Staging caps the downside if consumer response is weak. National scale stays conditional on better benefit recall and proof comprehension, positive incremental contribution after cannibalisation, and zero compliance failures."
+        }
+      ],
+      "skillNotes": {
+        "cs": "Diagnosed the proof-visibility gap and turned it into two measurable recommendations.",
+        "mi": "Benchmarked competitor claims, pricing and category trends across premium fresh milk.",
+        "seg": "Separated family reassurance from functional-wellness demand using behavioural segmentation and effectiveness evidence.",
+        "pos": "Built a price–benefit–proof positioning map and tested whether the value proposition is believable.",
+        "cplan": "Designed a 12–18-month stage-gated rollout with staged budget release and success measures.",
+        "kpi": "Defined pilot measures: benefit recall, segment–SKU matching, trial conversion and scan completion."
+      },
+      "skills": [
+        "cs",
+        "mi",
+        "seg",
+        "pos",
+        "cplan",
+        "kpi",
+        "da",
+        "ps"
+      ]
+    },
+    {
+      "id": "loccitane-imc",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "L'OCCITANE en Provence: Market Intelligence, Segmentation & IMC Investment Plan",
+      "short": "L'OCCITANE Marketing Plan",
+      "subtitle": "Team marketing plan · premium hand care",
+      "year": "2026",
+      "categories": [
+        "commercial",
+        "business"
+      ],
+      "role": "Team project · Research & commercial planning",
+      "roleDetail": "My responsibilities: micro-environment analysis · consumer segmentation · budget, timeline and KPI planning. Academic team project of six (MKTG1205); campaign concepts, product recommendations and positioning belong to the wider team.",
+      "summary": "A six-person marketing plan for L'OCCITANE hand cream in Vietnam; I led the market intelligence, the customer segments and the budget, timeline and decision gates.",
+      "finding": {
+        "title": "Premium demand exists; trust and trial limit conversion",
+        "text": "Cheaper substitutes and limited physical trial constrain conversion. L'OCCITANE's strongest advantage combines authenticated provenance with a premium experience, delivered through controlled digital channels."
+      },
+      "highlights": [
+        {
+          "value": "3 segments",
+          "label": "prioritised from four scored; Practical Repair excluded"
+        },
+        {
+          "value": "VND 293m",
+          "label": "proposed capability investment (planned, not spent)"
+        },
+        {
+          "value": "VND 223m",
+          "label": "net incremental seasonal request (planned)"
+        }
+      ],
+      "star": {
+        "situation": "In Vietnam's premium hand-care market, L'OCCITANE costs roughly 3–4× accessible French alternatives, faces authenticity concerns and has few places for shoppers to try the product.",
+        "task": "Within a six-person team, analyse the market actors, build the customer segments and turn the team's strategy into a budget, timeline and KPIs.",
+        "action": "Mapped customers, intermediaries, competitors, suppliers and publics; scored four segments and profiled three; then built the seasonal budget and a decision-gated timeline.",
+        "result": "Delivered the evidence base and commercial plan for the team's proposal: three prioritised segments, a VND 223m net seasonal request on VND 293m of capability investment, and test–replicate–scale gates."
+      },
+      "approach": [
+        "Micro-environment analysis of customers, intermediaries, competitors, suppliers and publics",
+        "Price benchmarking per 10 ml against accessible French and fragrance brands",
+        "Segment scoring and profiles with customer journeys and pain points",
+        "Seasonal budget with reallocation of existing lines and per-unit variable economics",
+        "Decision-gated timeline based on Cooper's stage-gate model"
+      ],
+      "recommendations": [
+        "Target Premium Experience Seekers first, with Performance Assurance Seekers and Accessible Indulgence Explorers next; exclude Practical Repair Seekers, who would need lower prices and mass distribution.",
+        "Fund capability first: provenance verification is the largest fixed investment, while Hand-Spa and Magic Key stay boutique-level pilots.",
+        "Test one boutique, replicate in a second, then scale, revise or stop each element before any 2027 commitment."
+      ],
+      "measures": [
+        "Gate 1 (15 Nov): provenance QA passed, first boutique proven, Magic Key tested",
+        "Gate 2 (29 Nov): Hand-Spa operating procedure fixed before peak demand",
+        "Gate 3 (27 Dec): second boutique and Christmas commercial validation complete",
+        "Gate 4 (28 Dec onward): scale, revise or stop each element"
+      ],
+      "rigor": [],
+      "contribution": [
+        "Micro-environment analysis: customers, intermediaries, competitors, suppliers and publics.",
+        "Consumer segmentation: four segments scored, three profiled with journeys.",
+        "Budget, timeline and KPIs: seasonal budget, capability investment and decision gates."
+      ],
+      "limitations": [
+        "All budget figures are planned, modelled amounts, not approved or incurred spend.",
+        "The plan was not executed, so no sales results are claimed."
+      ],
+      "links": [],
+      "figures": [
+        {
+          "src": "assets/projects/loccitane/micro-environment.webp",
+          "w": 1600,
+          "h": 856,
+          "alt": "Micro-environment slide covering customers, marketing intermediaries, competitors, company, suppliers and publics, ending in one implication.",
+          "caption": "Pricing, counterfeit worries, limited trial and provenance combine into one strategic implication.",
+          "insight": "Customer segments want different things, physical trial is scarce outside HCMC and Hanoi, and the product costs 3–4× accessible alternatives. The brand's defensible proof is traceable sourcing, so the plan leads with provenance rather than price promotion."
+        },
+        {
+          "src": "assets/projects/loccitane/segmentation.webp",
+          "w": 1600,
+          "h": 856,
+          "alt": "Segment scoring table and profiles for Premium Experience Seekers, Performance Assurance Seekers and Accessible Indulgence Explorers, with demographic, geographic, psychographic and behavioural detail.",
+          "caption": "Four segments scored on five criteria; three profiled, and Practical Repair Seekers excluded.",
+          "insight": "Each segment has a different purchase goal, from small daily luxury to proof that the premium is worth it, so one generic premium message would not convert all three."
+        },
+        {
+          "src": "assets/projects/loccitane/budget-allocation.webp",
+          "w": 1600,
+          "h": 856,
+          "alt": "Budget slide: VND 293m builds capability and VND 223m is the incremental seasonal request, with a variable-economics table, allocation pie charts and an infrastructure-versus-IMC bar chart.",
+          "caption": "Capability is funded first; seasonal spend is a smaller, reallocated request.",
+          "insight": "A VND 250m seasonal envelope is offset by VND 27m reallocated from existing lines, giving a VND 223m net request. Hand-Spa and Magic Key stay boutique pilots rather than national commitments."
+        }
+      ],
+      "skillNotes": {
+        "cs": "Turned market evidence into prioritised segments and a staged investment plan.",
+        "mi": "Analysed customers, intermediaries, competitors, suppliers and publics for premium hand care.",
+        "seg": "Developed segment profiles and examined trial, authenticity and premium-experience barriers.",
+        "cplan": "Built the seasonal budget, capability investment and test–replicate–scale decision gates.",
+        "kpi": "Set the decision gates that decide whether each element scales, is revised or stops."
+      },
+      "skills": [
+        "cs",
+        "mi",
+        "seg",
+        "cplan",
+        "kpi"
+      ]
+    },
+
     /* roles / experience */
     {
       id: "rbac", type: "role",
@@ -743,6 +990,15 @@ window.PORTFOLIO = {
     {
       id: "business", name: "Business", icon: "cat_business",
       capabilities: [
+        { id: "cs", name: "Commercial Strategy", icon: "radar",
+          description: "Turning market and customer evidence into measurable commercial recommendations.",
+          emerging: [{ name: "Digital Customer Experience Strategy", note: "Concept and prototype evidence: the Vinamilk QR Proof Passport journey." }],
+          skills: [
+            { id: "mi", name: "Market & Competitive Intelligence", icon: "magnify", description: "Investigating category structure, competitive alternatives, pricing and market constraints." },
+            { id: "seg", name: "Consumer Segmentation & Targeting", icon: "users", description: "Defining consumer groups by the benefits they seek, assessing their attractiveness and turning the differences into targeting choices." },
+            { id: "pos", name: "Brand Positioning & Value Proposition", icon: "crosshair", description: "Mapping competitive positions and testing whether a value proposition is both differentiated and believable." },
+            { id: "cplan", name: "Commercial Planning & KPI Design", icon: "calendar", description: "Turning strategy into budgets, staged rollouts, decision gates and success measures." }
+          ] },
         { id: "ps", name: "Problem Structuring", icon: "hierarchy", proven: true,
           description: "Breaking open-ended business questions into analysable parts.", skills: [] },
         { id: "comm", name: "Stakeholder Communication", icon: "bubbles", proven: true,
@@ -755,6 +1011,16 @@ window.PORTFOLIO = {
           description: "Presenting analysis and recommendations to an audience.", skills: [] }
       ]
     }
+  ],
+
+  /* --------------------------------------------- recruiter views (Projects page)
+     Each view lists the projects to show first for that kind of role. */
+  views: [
+    { id: "finance-data", name: "Finance / Data Analyst", why: "Business evaluation, analytical rigour and turning findings into decisions", projects: ["svc-valuation", "vinamilk-green-farm", "credit-risk", "fpt-equity"] },
+    { id: "commercial-ba", name: "Commercial / Business Analyst", why: "Segmentation, competitive intelligence and business recommendations", projects: ["vinamilk-green-farm", "loccitane-imc", "fba-hdbank", "ecommerce"] },
+    { id: "fpa", name: "FP&A / Commercial Finance", why: "Budgeting, scenario thinking, financial planning and performance measures", projects: ["loccitane-imc", "svc-valuation", "fpt-equity", "vn30-portfolio"] },
+    { id: "marketing", name: "Marketing Strategy / Planning", why: "Consumer insights, positioning, journey analysis and IMC planning", projects: ["loccitane-imc", "vinamilk-green-farm"] },
+    { id: "product", name: "Product / Growth Analyst", why: "Customer-benefit mapping, digital concept design and a measurement framework", projects: ["vinamilk-green-farm", "ecommerce"] }
   ],
 
   /* ----------------------------------------------------------- milestones

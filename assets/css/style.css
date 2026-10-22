@@ -632,3 +632,55 @@ a.ev-card:hover { border-color: var(--border-hover); color: var(--text-primary);
 .hl { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .case .star__item { margin-top: 0; }
 .case .pv__sec { margin-top: 28px; }
+
+/* ==========================================================================
+   Commercial-strategy projects: finding first, numbered 01–05 sections,
+   figure on the left with its business interpretation on the right.
+   ========================================================================== */
+.hero__support { display: block; margin-top: 10px; font-size: 16px; color: var(--text-secondary); }
+.pj__n { font-size: 13px; line-height: 1.45; color: var(--text-primary); margin-top: 8px; }
+.emerging { margin-top: 16px; padding: 12px 14px; border: 1px dashed #596072; border-radius: 6px; font-size: 14px; }
+.emerging .kicker { font-size: 11px; margin-bottom: 4px; }
+.emerging p { margin: 0; }
+.role-banner { margin-top: 20px; padding: 14px 18px; background: var(--card); border: 1px solid var(--border-subtle); border-left: 3px solid #F08CAE; border-radius: 0 8px 8px 0; }
+.role-banner .kicker { font-size: 11px; margin-bottom: 4px; }
+.role-banner p { margin: 0; font-size: 15px; }
+.finding { margin-top: 20px; padding: 20px 22px; background: linear-gradient(135deg, rgba(228, 198, 110, 0.10), rgba(228, 198, 110, 0.02)); border: 1px solid rgba(228, 198, 110, 0.35); border-radius: 10px; }
+.finding .kicker { color: var(--accent-gold-hi); font-size: 11px; }
+.finding h3 { margin: 6px 0 8px; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.25; }
+.finding p { margin: 0; font-size: 16px; line-height: 1.6; }
+.steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 28px; }
+.step { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; padding-top: 22px; border-top: 1px solid var(--border-subtle); }
+.step__n { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-gold-hi); line-height: 1; padding-top: 2px; }
+.step__b > h3 { margin: 0; font-size: 20px; line-height: 1.3; }
+.step__tag { margin: 4px 0 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.step__b > p { margin: 0 0 10px; font-size: 15px; line-height: 1.6; }
+.step__b h4 { margin: 20px 0 8px; font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); }
+.step .list { margin: 0; }
+.frow { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 22px; align-items: start; margin-top: 14px; }
+.frow + .frow { margin-top: 26px; }
+.frow .fig figcaption { display: none; }
+.frow .fig--hero .fig__btn img { max-height: 380px; }
+.step__b .frow__txt h4 { margin: 4px 0 8px; font-family: var(--font-sans); font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text-primary); line-height: 1.4; }
+.frow__txt p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+.rigor { border: 1px solid var(--border-subtle); border-radius: 8px; overflow: hidden; }
+.rigor__row { display: grid; grid-template-columns: 1fr 1fr; }
+.rigor__row span { padding: 10px 14px; font-size: 14px; line-height: 1.5; border-top: 1px solid var(--border-subtle); }
+.rigor__row span + span { border-left: 1px solid var(--border-subtle); color: var(--text-secondary); }
+.rigor__head span { border-top: 0; background: var(--card); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); }
+.step .pv__cta { margin-top: 22px; }
+.case .step { margin-top: 0; }
+@media (max-width: 759px) {
+  .step { grid-template-columns: 1fr; gap: 6px; }
+  .frow { grid-template-columns: 1fr; gap: 10px; }
+  .rigor__row { grid-template-columns: 1fr; }
+  .rigor__row span + span { border-left: 0; border-top: 0; padding-top: 0; }
+  .rigor__head { display: none; }
+  .rigor__row span:first-child { font-weight: 600; }
+}
+@media (max-width: 759px) {
+  .pv__head { position: static; margin: 0; padding: 0; }
+  .pv__head h2 { font-size: 22px; }
+  .pv__head .kicker { white-space: normal; font-size: 11px; }
+  .pv__inner .pv__head + * { margin-top: 14px; }
+}
