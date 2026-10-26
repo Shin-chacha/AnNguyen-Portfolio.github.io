@@ -693,3 +693,50 @@ a.ev-card:hover { border-color: var(--border-hover); color: var(--text-primary);
 .tools li span span { display: block; font-size: 13px; line-height: 1.45; color: var(--text-secondary); margin-top: 2px; }
 .frow--wide { grid-template-columns: 1fr; }
 .frow--wide .fig--hero .fig__btn img { max-height: none; }
+/* comparison tables, existing/proposed toggle, established/proposed/open, edition notes */
+.mtx { margin-top: 22px; }
+.mtx:first-child { margin-top: 6px; }
+.step__b .mtx h4 { margin: 0 0 4px; font-family: var(--font-sans); font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text-primary); }
+.mtx__note { margin: 0 0 10px; font-size: 13px; color: var(--text-secondary); }
+.mtx__scroll { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: 8px; }
+.mtx__scroll:focus-visible { outline: 2px solid var(--border-active); outline-offset: 2px; }
+.mtx table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+.mtx th, .mtx td { padding: 10px 14px; text-align: left; vertical-align: top; border-top: 1px solid var(--border-subtle); }
+.mtx td + td, .mtx th + td { border-left: 1px solid var(--border-subtle); }
+.mtx thead th { border-top: 0; background: var(--card); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); }
+.mtx thead th + th { border-left: 1px solid var(--border-subtle); }
+.mtx tbody th { font-weight: 600; color: var(--text-primary); min-width: 140px; }
+.mtx td { color: var(--text-secondary); }
+.mtx td:last-child { color: var(--text-primary); }
+.cmp { margin-top: 6px; }
+.step__b .cmp > h4 { margin-top: 0; }
+.cmp__tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.cmp__tabs .seg[aria-selected="true"] { background: var(--accent-gold); border-color: var(--accent-gold); color: var(--on-gold); font-weight: 600; }
+.cmp__tabs .seg:focus-visible { outline: 2px solid var(--border-active); outline-offset: 2px; }
+.cmp__panel[hidden] { display: none; }
+.cmp__notes { margin: 0 0 14px; padding: 0; list-style: none; counter-reset: cmp; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.cmp__notes li { counter-increment: cmp; position: relative; padding: 12px 14px 12px 44px; background: var(--card); border: 1px solid var(--border-subtle); border-radius: 8px; font-size: 14px; line-height: 1.5; }
+.cmp__notes li::before { content: counter(cmp); position: absolute; left: 12px; top: 11px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--accent-gold); color: var(--on-gold); font-family: var(--font-mono); font-size: 12px; font-weight: 700; }
+.cmp__figs { display: grid; gap: 14px; }
+.cmp__figs .fig--hero .fig__btn img { max-height: none; }
+.triad { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.triad__c { padding: 12px 14px; background: var(--card); border: 1px solid var(--border-subtle); border-top: 3px solid var(--tc, var(--border-default)); border-radius: 8px; }
+.triad__c.is-est { --tc: var(--accent-data); }
+.triad__c.is-prop { --tc: var(--accent-gold-hi); }
+.triad__c.is-open { --tc: #F08CAE; }
+.triad__c h5 { margin: 0 0 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-primary); }
+.triad__c .list { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
+.corr { margin-top: 22px; padding: 14px 18px; border: 1px dashed var(--border-default); border-radius: 8px; }
+.step__b .corr h4 { margin-top: 0; }
+.corr__intro { margin: 0 0 10px; font-size: 14px; color: var(--text-secondary); }
+.corr ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 14px; line-height: 1.55; }
+@media (max-width: 759px) {
+  .triad { grid-template-columns: 1fr; }
+  .mtx__scroll { overflow: visible; border: 0; }
+  .mtx table, .mtx tbody, .mtx tr, .mtx th, .mtx td { display: block; width: 100%; }
+  .mtx thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .mtx tr { border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+  .mtx th, .mtx td { border: 0 !important; padding: 8px 14px; }
+  .mtx tbody th { background: var(--card); }
+  .mtx td::before { content: attr(data-label); display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+}

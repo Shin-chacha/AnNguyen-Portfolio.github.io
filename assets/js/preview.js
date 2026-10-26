@@ -84,12 +84,51 @@
   const chipsHTML = (p) => { const sk = projectSkills(p); return sk.length ? `<ul class="chips">${sk.map((s) =>
     `<li><a class="chip chip--sm" href="index.html?skill=${encodeURIComponent(s.id)}#map">${esc(s.name)}</a></li>`).join("")}</ul>` : ""; };
 
+  /* comparison / matrix tables (real HTML tables so they stay readable and searchable) */
+  function tablesHTML(p) {
+    return asList(p.tables).map((t) => `<div class="mtx">
+        <h4>${esc(t.title)}</h4>
+        ${t.note ? `<p class="mtx__note">${esc(t.note)}</p>` : ""}
+        <div class="mtx__scroll" tabindex="0" role="region" aria-label="${esc(t.title)}"><table>
+          <thead><tr>${t.head.map((h) => `<th scope="col">${esc(h)}</th>`).join("")}</tr></thead>
+          <tbody>${t.rows.map((r) => `<tr>${r.map((c, j) => j === 0 ? `<th scope="row">${esc(c)}</th>` : `<td data-label="${esc(t.head[j] || "")}">${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
+        </table></div></div>`).join("");
+  }
+  /* existing vs proposed toggle: tabs reference figure indices */
+  function compareHTML(p) {
+    const c = p.compare; if (!c) return "";
+    const F = figs(p);
+    return `<div class="cmp" data-cmp="${esc(p.id)}">
+        <h4>${esc(c.title)}</h4>
+        <div class="cmp__tabs" role="tablist" aria-label="${esc(c.title)}">${c.tabs.map((t, k) =>
+          `<button type="button" role="tab" id="cmp-${esc(p.id)}-t${k}" aria-controls="cmp-${esc(p.id)}-p${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}" class="seg" data-cmp-tab="${k}">${esc(t.label)}</button>`).join("")}</div>
+        ${c.tabs.map((t, k) => `<div class="cmp__panel" role="tabpanel" id="cmp-${esc(p.id)}-p${k}" aria-labelledby="cmp-${esc(p.id)}-t${k}" ${k === 0 ? "" : "hidden"}>
+            <ol class="cmp__notes">${t.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ol>
+            <div class="cmp__figs">${t.figs.map((i) => figureHTML(p, F[i], i, "fig--hero")).join("")}</div>
+          </div>`).join("")}
+      </div>`;
+  }
+  function triadHTML(p) {
+    const t = p.triad; if (!t) return "";
+    const col = (title, items, cls) => items && items.length ? `<div class="triad__c ${cls}"><h5>${title}</h5>${ul(items)}</div>` : "";
+    return `<h4>What the research established, proposed and left open</h4><div class="triad">
+        ${col("Established", t.established, "is-est")}${col("Proposed", t.proposed, "is-prop")}${col("Still unresolved", t.unresolved, "is-open")}</div>`;
+  }
+  function correctionsHTML(p) {
+    const c = asList(p.corrections); if (!c.length) return "";
+    return `<div class="corr"><h4>Portfolio edition notes · ${esc(p.editionDate || "")}</h4>
+        <p class="corr__intro">The original submission is kept as a historical academic record. These notes correct or update it for this portfolio.</p>
+        <ul>${c.map((x) => `<li><strong>${esc(x.issue)}</strong> ${esc(x.fix)}${x.source ? ` <a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.label)} ${icon("ext", 12)}</a>` : ""}</li>`).join("")}</ul></div>`;
+  }
+
   /* Commercial-strategy layout: finding first, then 01–05 numbered sections,
      figures on the left with their business interpretation on the right. */
   function strategyBodyHTML(p, opts) {
     const F = figs(p), star = p.star || {}, hl = p.highlights || [];
     const step = (n, title, tag, body) => `<li class="step"><span class="step__n" aria-hidden="true">${n}</span><div class="step__b"><h3><span class="sr-only">${n}. </span>${title}</h3>${tag ? `<p class="step__tag">${tag}</p>` : ""}${body}</div></li>`;
     const rigor = p.rigor || [];
+    const inCompare = new Set(p.compare ? p.compare.tabs.flatMap((t) => t.figs) : []);
+    const gallery = F.map((f, i) => [f, i]).filter(([, i]) => !inCompare.has(i));
     return `
       ${p.roleDetail ? `<div class="role-banner"><p class="kicker">My role · ${esc(p.role || "")}</p><p>${esc(p.roleDetail)}</p></div>` : ""}
       ${p.finding ? `<div class="finding"><p class="kicker">Key strategic finding</p><h3>${esc(p.finding.title)}</h3><p>${esc(p.finding.text)}</p></div>` : ""}
@@ -97,7 +136,7 @@
       <ol class="steps">
         ${step("01", "The business problem", "Situation · Task", `<p>${esc(star.situation || "")}</p><p>${esc(star.task || "")}</p>`)}
         ${step("02", p.tools ? "Workflow &amp; tools" : "Analytical approach", "Action", `<p>${esc(star.action || "")}</p>${toolsHTML(p)}${asList(p.approach).length ? `${p.tools ? "<h4>Stages</h4>" : ""}${ul(asList(p.approach))}` : ""}`)}
-        ${F.length ? step("03", p.tools ? "Agent flowchart" : "Key figures", "", F.map((f, i) => `<div class="frow${F.length === 1 ? " frow--wide" : ""}">${figureHTML(p, f, i, i === 0 ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
+        ${(F.length || asList(p.tables).length || p.compare) ? step("03", p.tools ? "Agent flowchart" : p.figuresTitle || "Key figures", "", compareHTML(p) + tablesHTML(p) + gallery.map(([f, i]) => `<div class="frow${gallery.length === 1 ? " frow--wide" : ""}">${figureHTML(p, f, i, i === gallery[0][1] ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
         ${step("04", "Recommendations &amp; measurement", "Result", `<p>${esc(star.result || "")}</p>
             ${asList(p.recommendations).length ? `<h4>Recommendations</h4>${ul(asList(p.recommendations))}` : ""}
             ${asList(p.measures).length ? `<h4>How success would be measured</h4>${ul(asList(p.measures))}` : ""}
@@ -106,7 +145,9 @@
                 <div class="rigor__row rigor__head" role="row"><span role="columnheader">${esc((p.rigorHead || [])[0] || "Supported finding")}</span><span role="columnheader">${esc((p.rigorHead || [])[1] || "Important limitation")}</span></div>
                 ${rigor.map(([a, b]) => `<div class="rigor__row" role="row"><span role="cell">${esc(a)}</span><span role="cell">${esc(b)}</span></div>`).join("")}
               </div>` : ""}
-            ${asList(p.limitations).length ? `<h4>Assumptions and limitations</h4>${ul(asList(p.limitations))}` : ""}`)}
+            ${triadHTML(p)}
+            ${asList(p.limitations).length ? `<h4>Assumptions and limitations</h4>${ul(asList(p.limitations))}` : ""}
+            ${correctionsHTML(p)}`)}
         ${step("05", "My contribution &amp; evidence", p.role ? esc(p.role) : "", `${ul(asList(p.contribution))}<h4>Skills applied</h4>${chipsHTML(p)}${ctaHTML(p, opts)}`)}
       </ol>`;
   }
@@ -254,7 +295,21 @@
     else if (st.lb && (e.key === "ArrowRight" || e.key === "ArrowLeft")) { e.preventDefault(); showFig(st.lb.pid, st.lb.i + (e.key === "ArrowRight" ? 1 : -1)); }
   }, true);
 
+  function selectTab(btn) {
+    const box = btn.closest(".cmp"); const k = btn.dataset.cmpTab;
+    box.querySelectorAll("[data-cmp-tab]").forEach((b) => { const on = b.dataset.cmpTab === k; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    box.querySelectorAll(".cmp__panel").forEach((pn, j) => { pn.hidden = String(j) !== k; });
+  }
+  document.addEventListener("keydown", (e) => {
+    const t = e.target.closest && e.target.closest("[data-cmp-tab]");
+    if (!t || !["ArrowRight", "ArrowLeft"].includes(e.key)) return;
+    const tabs = [...t.closest(".cmp").querySelectorAll("[data-cmp-tab]")];
+    const n = tabs[(tabs.indexOf(t) + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+    e.preventDefault(); selectTab(n); n.focus();
+  });
   document.addEventListener("click", (e) => {
+    const tb = e.target.closest("[data-cmp-tab]");
+    if (tb) { selectTab(tb); return; }
     const fb = e.target.closest(".fig__btn");
     if (fb) { showFig(fb.dataset.pid, +fb.dataset.fig, fb); return; }
     if (e.target.closest("[data-lb-close]") || e.target === $("lb") || e.target.classList.contains("lb__stage")) { closeFig(); return; }

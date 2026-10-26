@@ -53,7 +53,9 @@ window.PORTFOLIO = {
     { id: "ml", name: "Machine Learning" },
     { id: "business", name: "Business" },
     { id: "commercial", name: "Commercial Strategy" },
-    { id: "ai", name: "AI & Automation" }
+    { id: "ai", name: "AI & Automation" },
+    { id: "fintech", name: "Fintech & Governance" },
+    { id: "leadership", name: "Leadership & Engagement" }
   ],
 
   /* ------------------------------------------------------------ evidence
@@ -1011,6 +1013,767 @@ window.PORTFOLIO = {
       ]
     },
 
+    {
+      "id": "shopee-analytics-panel",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "From Data to Decisions: Your Career Path in Data Analytics (Shopee Vietnam Panel)",
+      "short": "Shopee × Analytics Club Panel",
+      "subtitle": "Event leadership · industry engagement",
+      "year": "2025",
+      "categories": [
+        "leadership"
+      ],
+      "role": "Project Leader · RMIT Analytics Club",
+      "roleDetail": "Project leader of the panel for the RMIT Analytics Club. Evidence status: the event deck documents the theme, speakers and programme; attendance and feedback results are still being compiled and are not claimed here.",
+      "summary": "A student panel that brought Shopee Vietnam's Business Intelligence and People teams to RMIT to show how data drives e-commerce decisions and careers.",
+      "finding": {
+        "title": "From data to decisions, and from study to a career",
+        "text": "The programme moved from how Shopee uses data for competitive advantage to the roles, skills and entry programmes behind that work, so students saw both the business problem and the path into it."
+      },
+      "highlights": [
+        {
+          "value": "2 speakers",
+          "label": "Shopee Vietnam: Business Intelligence and People teams"
+        },
+        {
+          "value": "7-part programme",
+          "label": "keynote, panel, tea break, career insights, Q&A, networking"
+        },
+        {
+          "value": "Feedback form",
+          "label": "collected at the close (results not yet reported)"
+        }
+      ],
+      "star": {
+        "situation": "Analytics Club students wanted a practical view of analytics work and career paths in e-commerce, beyond what coursework shows.",
+        "task": "As project leader, deliver a panel that connected students with practitioners at Shopee Vietnam and gave them a clear picture of data roles.",
+        "action": "Led the club project behind a seven-part programme: a keynote on data in e-commerce, a panel on data for competitive advantage, career and industry insights, Q&A and a networking session.",
+        "result": "Delivered the panel with two Shopee Vietnam speakers from Business Intelligence and the People team, closing with a feedback form. Attendance and feedback figures will be added once compiled."
+      },
+      "approach": [
+        "Keynote: the power of data in e-commerce",
+        "Panel: leveraging data for competitive advantage (business internal solutions and the 'data' industry)",
+        "Career and industry insights: current context, competitive and necessary skills, career programmes",
+        "Q&A, networking and a closing feedback form"
+      ],
+      "recommendations": [],
+      "measures": [
+        "Registrations and check-ins",
+        "Feedback-form responses and satisfaction",
+        "Follow-up applications to the career programmes presented"
+      ],
+      "contribution": [
+        "Project leader for the event within the RMIT Analytics Club."
+      ],
+      "limitations": [
+        "The 'Our events' slide shows photos of other club events, so they are not used here.",
+        "A feedback form was collected, but no satisfaction results are reported yet.",
+        "Shopee took part through its speakers; the deck lists the RMIT Student Club Program and Student Council as sponsors."
+      ],
+      "links": [],
+      "requestLabel": "Request event details",
+      "requestNote": "Event materials and results are available on request.",
+      "skillNotes": {
+        "coord": "Led the club project that delivered the panel programme end to end.",
+        "evt": "Ran a seven-part programme from keynote and panel to Q&A, networking and feedback.",
+        "comm": "Coordinated between the club team and the Shopee Vietnam speakers.",
+        "pres": "Shaped the event narrative from data for competitive advantage to data careers."
+      },
+      "figures": [
+        {
+          "src": "assets/projects/shopee-analytics-panel/event-cover.webp",
+          "w": 1600,
+          "h": 900,
+          "alt": "Event title slide: Panel Discussion, From Data to Decisions: Your Career Path in Data Analytics.",
+          "caption": "Event identity: From Data to Decisions.",
+          "insight": "The theme sets up the two halves of the programme: how data drives decisions in e-commerce, and how students can build a career doing it."
+        },
+        {
+          "src": "assets/projects/shopee-analytics-panel/speakers.webp",
+          "w": 1600,
+          "h": 900,
+          "alt": "Guest speakers slide introducing Mr. Huy Nguyen, Senior Manager, Business Intelligence, and Ms. Trang Nguyen, People Team, both at Shopee Vietnam.",
+          "caption": "Industry participation: Business Intelligence and People team speakers from Shopee Vietnam.",
+          "insight": "Pairing a BI leader with a People-team speaker covered both sides students care about: what the analytics work involves, and how Shopee hires for it. Roles are as introduced at the event."
+        },
+        {
+          "src": "assets/projects/shopee-analytics-panel/programme.webp",
+          "w": 1600,
+          "h": 900,
+          "alt": "Agenda slide listing seven items: introduction, keynote, panel discussion, tea break, career and industry insights, Q&A, and networking.",
+          "caption": "The programme I coordinated, in seven parts.",
+          "insight": "The order builds from business context to careers, ending with Q&A and networking so students could follow up directly with the speakers."
+        }
+      ],
+      "skills": [
+        "coord",
+        "evt",
+        "comm",
+        "pres"
+      ]
+    },
+    {
+      "id": "blockchain-trade-finance",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "Blockchain Suitability & Trade-Finance Workflow Design for Vietnamese SMEs",
+      "short": "Blockchain Trade Finance",
+      "subtitle": "Fintech strategy · process redesign · AI output evaluation",
+      "year": "2026",
+      "categories": [
+        "fintech",
+        "finance"
+      ],
+      "role": "Individual assignment",
+      "roleDetail": "Individual academic evaluation and proposed design (ISYS3450 Blockchain for Business, RMIT). Not a deployed system: speed and financing benefits below are expected mechanisms or external benchmarks, not results I measured.",
+      "summary": "I critiqued AI-generated blockchain recommendations, ran a 10-step suitability test, and redesigned an SME trade-finance workflow in BPMN with governance and privacy controls.",
+      "finding": {
+        "title": "The bottleneck is verifiable risk signals, not slow paperwork",
+        "text": "Banks are unable or unwilling to lend, not because transactions are inefficient, but because SMEs cannot present acceptable collateral or verifiable risk signals. A permissioned, consortium-governed ledger can turn trade events into a tamper-evident record banks can assess, if governance and privacy are designed in."
+      },
+      "highlights": [
+        {
+          "value": "10-step test",
+          "label": "decision path points to a permissioned consortium ledger"
+        },
+        {
+          "value": "3 AI outputs",
+          "label": "graded against a 4-criterion rubric"
+        },
+        {
+          "value": "Existing → proposed",
+          "label": "trade-finance workflow redesigned in BPMN"
+        }
+      ],
+      "star": {
+        "situation": "SME trade finance in Vietnam suffers from fragmented verification across banks, buyers and logistics, and SMEs struggle to present credible risk information.",
+        "task": "Assess whether blockchain actually fits the problem, and improve the AI-generated recommendations on suitability, design, legal issues and sustainability.",
+        "action": "Graded the AI outputs on a 4-criterion rubric, applied Pedersen et al.'s 10-step decision path, mapped the existing and proposed processes in BPMN, and proposed governance and privacy controls.",
+        "result": "A reasoned case for a permissioned, consortium-governed ledger rather than blockchain by default, plus a redesigned workflow and controls, with implementation limits stated explicitly."
+      },
+      "approach": [
+        "Rubric-based critique of AI outputs: relevance and accuracy, depth and reasoning, evidence, theory",
+        "Suitability: 10-step blockchain decision path (shared database, multiple parties, trust, public access)",
+        "Root-cause focus: verifiable risk signals rather than processing speed",
+        "BPMN of the traditional and blockchain-enabled trade-finance processes",
+        "Legal and governance review: Vietnam e-transactions law and personal data protection"
+      ],
+      "compare": {
+        "title": "Existing vs proposed process",
+        "tabs": [
+          {
+            "label": "Existing process",
+            "figs": [
+              2,
+              3
+            ],
+            "notes": [
+              "The lending decision fails upstream: risk is judged on collateral SMEs do not have, rather than the trade data they do have.",
+              "Even successful trade execution does not generate trusted risk signals for banks.",
+              "Document discrepancies trigger rework loops that add time and fees and erode SME margins."
+            ]
+          },
+          {
+            "label": "Proposed process",
+            "figs": [
+              4,
+              5
+            ],
+            "notes": [
+              "A confirmed purchase order becomes a verified, financeable asset instead of 'just a document'.",
+              "Risk is priced on verified trade behaviour rather than real-estate collateral.",
+              "SMEs could receive working capital upfront rather than about 90 days later (an expected mechanism, not a measured result)."
+            ]
+          }
+        ]
+      },
+      "tables": [
+        {
+          "title": "Which option fits which requirement",
+          "note": "Portfolio summary of the decision path in slides 6–7.",
+          "head": [
+            "Requirement",
+            "Existing manual process",
+            "Shared database + APIs",
+            "Permissioned consortium ledger"
+          ],
+          "rows": [
+            [
+              "Several institutions write the same records",
+              "Paper and email between parties",
+              "Yes, but one operator controls the record",
+              "Yes, each party writes under consortium rules"
+            ],
+            [
+              "No single party trusted to own the record",
+              "Relies on bank document checks",
+              "Everyone must trust the operator",
+              "Tamper-evident shared log with no single owner"
+            ],
+            [
+              "Public access needed",
+              "No",
+              "No",
+              "No: access stays permissioned"
+            ],
+            [
+              "Personal data and deletion rights",
+              "Records can be deleted",
+              "Records can be deleted",
+              "Keep personal data off-chain; only hashes and pointers on-chain"
+            ],
+            [
+              "Cost and complexity",
+              "Low technology cost, high processing cost",
+              "Lower; familiar technology",
+              "Highest: consortium governance, onboarding and change control"
+            ],
+            [
+              "Best fit when",
+              "Volumes are low",
+              "One trusted operator is acceptable",
+              "Several institutions need a shared record nobody owns alone"
+            ]
+          ]
+        }
+      ],
+      "recommendations": [
+        "Consortium charter and RACI: who can write and read, who runs nodes, who audits, and who is liable for bad data.",
+        "Change control: versioned smart contracts, controlled rollouts, voting thresholds and an emergency pause.",
+        "No personal data on-chain: hashes, pointers and minimal metadata on-chain; an encrypted off-chain vault for the rest.",
+        "Cross-border transfer governance where any node, operator or cloud storage sits offshore."
+      ],
+      "measures": [],
+      "rigor": [
+        [
+          "HSBC reported a domestic blockchain letter-of-credit pilot with Vietcombank on Contour that cut a 3–5 working-day process to 27 minutes",
+          "An external pilot benchmark, not something measured in this project"
+        ],
+        [
+          "A permissioned ledger gives a tamper-evident audit trail of trade events",
+          "It does not prove the original trade information is true, or guarantee that a bank will lend"
+        ],
+        [
+          "Vietnam's Personal Data Protection Law takes effect on 1 January 2026",
+          "Immutability conflicts with deletion rights unless personal data stays off-chain"
+        ],
+        [
+          "The AI's suitability answer scored CR, PA, NN, NN on my rubric",
+          "Grades are my assessment against the rubric I designed"
+        ]
+      ],
+      "contribution": [
+        "Designed the grading rubric and evaluated each AI output.",
+        "Applied the decision path and wrote the suitability recommendation.",
+        "Drew the traditional and blockchain-enabled BPMN diagrams and the governance controls."
+      ],
+      "limitations": [
+        "Academic evaluation and proposed design only; no system was built or piloted.",
+        "Several AI-generated cost and speed claims were unsourced, so they are not repeated here."
+      ],
+      "links": [],
+      "requestLabel": "Request the full deck",
+      "requestNote": "The full 28-slide deck is available on request.",
+      "skillNotes": {
+        "tfin": "Diagnosed why SMEs can't get trade finance and how verified trade data could change it.",
+        "bpmn": "Mapped the existing and blockchain-enabled trade-finance processes in BPMN.",
+        "teval": "Graded three AI outputs on a 4-criterion rubric and applied a 10-step suitability test.",
+        "aigov": "Proposed a consortium charter, RACI and change-control policy.",
+        "priv": "Kept personal data off-chain to reconcile immutability with deletion rights."
+      },
+      "figures": [
+        {
+          "src": "assets/projects/blockchain-trade-finance/decision-path.webp",
+          "w": 1600,
+          "h": 900,
+          "alt": "Ten-step blockchain decision path: shared database, multiple parties, trust issue, avoid trusted third parties, rules governing the system, unchanged transaction rules, immutable log all yes; public access and public transactions no; permissioned validators yes.",
+          "caption": "The 10-step decision path points to a permissioned, consortium-governed ledger.",
+          "insight": "The problem is multi-party and trust-constrained and needs a tamper-resistant shared log, but it does not need public access. That rules out a public chain and also rules out blockchain-by-default thinking."
+        },
+        {
+          "src": "assets/projects/blockchain-trade-finance/governance-controls.webp",
+          "w": 1600,
+          "h": 900,
+          "alt": "Legal challenges and mitigation slide: multiple jurisdictions, personal data versus immutability, and controls including a consortium charter, change control, no personal data on-chain and cross-border transfer governance.",
+          "caption": "Legal risks paired with governance and privacy controls.",
+          "insight": "Each risk has a concrete control. Personal data stays off-chain, and roles, liability and upgrades are governed by the consortium charter rather than left to the code."
+        },
+        {
+          "src": "assets/projects/blockchain-trade-finance/existing-process.webp",
+          "w": 1800,
+          "h": 1012,
+          "alt": "BPMN swimlane diagram of the traditional trade-finance process across exporter, importer banks and other parties.",
+          "caption": "Existing trade-finance process (BPMN)."
+        },
+        {
+          "src": "assets/projects/blockchain-trade-finance/existing-failure-points.webp",
+          "w": 1800,
+          "h": 1012,
+          "alt": "Traditional BPMN with failure points highlighted in red, including document discrepancy notices and rework loops that add time and fees.",
+          "caption": "Where verification and lending decisions break down."
+        },
+        {
+          "src": "assets/projects/blockchain-trade-finance/proposed-process.webp",
+          "w": 1800,
+          "h": 1012,
+          "alt": "BPMN swimlane diagram of the proposed blockchain-enabled trade-finance process, with changed steps highlighted.",
+          "caption": "Proposed blockchain-enabled process (BPMN)."
+        },
+        {
+          "src": "assets/projects/blockchain-trade-finance/proposed-changes.webp",
+          "w": 1600,
+          "h": 900,
+          "alt": "Slide showing three problems (unverifiable purchase orders, high due-diligence costs, cash-flow shocks) and how blockchain changes each.",
+          "caption": "What changes for SMEs and banks under the proposed process."
+        }
+      ],
+      "skills": [
+        "tfin",
+        "bpmn",
+        "teval",
+        "aigov",
+        "priv",
+        "ps"
+      ]
+    },
+    {
+      "id": "ripple-regulatory-governance",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "Ripple/XRP: Cross-Jurisdiction Regulatory Risk & AI Governance",
+      "short": "Ripple/XRP Regulatory Risk",
+      "subtitle": "Legal research · fintech governance · privacy design",
+      "year": "2025",
+      "categories": [
+        "fintech"
+      ],
+      "role": "Individual assignment",
+      "roleDetail": "LAW2619 Legal Considerations: AI, Big Data & Blockchain (RMIT), Assignment 2, submitted 24 April 2025. Academic research with a dated portfolio update; Ripple did not adopt these proposals, and nothing was implemented on the XRP Ledger.",
+      "summary": "An analysis of how token classification, privacy law and accountability differ across jurisdictions for Ripple, with three proposed frameworks and a critique of AI-generated legal advice.",
+      "finding": {
+        "title": "One global ledger, many legal regimes",
+        "text": "XRP is treated differently in the US, EU, Singapore and China, and the ledger's immutability clashes with deletion rights. The proposals aim to adapt compliance at the interface level while keeping a single global ledger."
+      },
+      "highlights": [
+        {
+          "value": "4 jurisdictions",
+          "label": "US, EU, Singapore and China compared"
+        },
+        {
+          "value": "3 proposals",
+          "label": "GTCF, layered privacy architecture, RDI accountability"
+        },
+        {
+          "value": "2-year plan",
+          "label": "four-phase GTCF implementation journey"
+        }
+      ],
+      "star": {
+        "situation": "Ripple runs one global ledger, but XRP's legal status, privacy duties and liability rules differ sharply between jurisdictions.",
+        "task": "Identify the main legal risks, critique AI-generated recommendations, and propose practical compliance and governance measures.",
+        "action": "Compared token classification across jurisdictions, analysed privacy conflicts with immutability, and designed a Global Token Compliance Framework, a layered privacy architecture and a Responsible Decentralised Intelligence accountability layer.",
+        "result": "A four-phase, two-year compliance roadmap and two supporting designs, with stated limits: courts may still hold Ripple Labs accountable regardless of on-chain attribution."
+      },
+      "approach": [
+        "Jurisdiction comparison of token classification (US, EU, Singapore, China)",
+        "Privacy analysis: GDPR minimisation and erasure, cross-border transfers, CCPA deletion rights",
+        "Critique of AI-generated legal recommendations",
+        "Design of three frameworks with an indicative implementation budget"
+      ],
+      "figuresTitle": "Key questions & figures",
+      "tables": [
+        {
+          "title": "How do regulatory differences affect a global product?",
+          "note": "As analysed in the April 2025 paper; not re-verified for later developments.",
+          "head": [
+            "Jurisdiction",
+            "Treatment of XRP",
+            "Business implication"
+          ],
+          "rows": [
+            [
+              "United States",
+              "SEC v Ripple: institutional sales treated as unregistered securities; secondary-market retail trades not",
+              "Sales channel determines exposure"
+            ],
+            [
+              "European Union",
+              "MiCA treats XRP as a crypto-asset regardless of buyer intent",
+              "One licensing and disclosure regime"
+            ],
+            [
+              "Singapore",
+              "Transactions licensed under AML/KYC rules without labelling XRP a security",
+              "Compliance via licensing, not reclassification"
+            ],
+            [
+              "China",
+              "Blanket ban on cryptocurrency trading",
+              "Market effectively closed"
+            ]
+          ]
+        },
+        {
+          "title": "How could the design address privacy risks?",
+          "note": "Layered privacy architecture proposed in the paper.",
+          "head": [
+            "Layer",
+            "What it does",
+            "Law it targets"
+          ],
+          "rows": [
+            [
+              "Federated learning",
+              "Trains AI models where data is stored, without moving it across borders",
+              "GDPR Article 44 transfer limits"
+            ],
+            [
+              "Off-chain store + on-chain references",
+              "Personal data held off-chain where it can be edited or deleted; only references on-chain",
+              "Erasure rights (GDPR Art. 17, CCPA)"
+            ],
+            [
+              "Zero-trust access",
+              "Every access to customer data verified in real time",
+              "Regulator concerns about leaks and internal misuse"
+            ]
+          ]
+        },
+        {
+          "title": "Who is accountable for system decisions?",
+          "note": "Responsible Decentralised Intelligence (RDI) layer proposed in the paper.",
+          "head": [
+            "Critical task",
+            "Duty holder",
+            "Audit evidence"
+          ],
+          "rows": [
+            [
+              "AI model design (e.g. risk scoring)",
+              "Ripple Labs",
+              "Model version recorded"
+            ],
+            [
+              "Execution (price-oracle calls, liquidity routing, sanctions screening)",
+              "Named validator or operator role",
+              "Decision fingerprint (hash of inputs or model version) on-chain"
+            ],
+            [
+              "Local legal constraints",
+              "Jurisdiction rules embedded in AI agents",
+              "Behaviour differs only at the interface; one global ledger"
+            ]
+          ]
+        }
+      ],
+      "triad": {
+        "established": [
+          "XRP's classification differs across the US, EU, Singapore and China.",
+          "Ledger immutability conflicts with erasure and data-transfer rules."
+        ],
+        "proposed": [
+          "A four-phase Global Token Compliance Framework over two years.",
+          "A layered privacy architecture and an RDI accountability layer."
+        ],
+        "unresolved": [
+          "Whether on-chain references count as anonymous data (see note below).",
+          "Final liability: courts may still look to Ripple Labs regardless of on-chain attribution."
+        ]
+      },
+      "editionDate": "26 Oct 2026",
+      "corrections": [
+        {
+          "issue": "Article 13 attribution.",
+          "fix": "The paper says the EU AI Act's Article 13 states that AI systems have no legal personhood. Article 13 actually covers transparency and information for deployers of high-risk AI systems; the personhood point needs a different source.",
+          "source": {
+            "label": "AI Act, Article 13",
+            "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-13"
+          }
+        },
+        {
+          "issue": "Hashes and off-chain deletion.",
+          "fix": "The paper implies that storing only hashes on-chain and deleting the off-chain record resolves privacy compliance. Hashes and pointers can still identify a person, so anonymisation and erasure need case-by-case assessment.",
+          "source": {
+            "label": "EDPB Guidelines 02/2025 on blockchain",
+            "url": "https://www.edpb.europa.eu/our-work-tools/documents/public-consultations/2025/guidelines-022025-processing-personal-data_sv?page=15"
+          }
+        },
+        {
+          "issue": "Cost figures.",
+          "fix": "The indicative GTCF budget (US$4.05M–8.0M) and component costs are planning estimates in the paper; they are not presented here as findings."
+        },
+        {
+          "issue": "Later developments.",
+          "fix": "Legal positions reflect April 2025; the status of SEC v Ripple and MiCA licensing should be rechecked before relying on them."
+        }
+      ],
+      "recommendations": [],
+      "measures": [],
+      "contribution": [
+        "Individual research, analysis and recommendations.",
+        "Critiqued AI-generated legal recommendations as part of the assignment."
+      ],
+      "limitations": [
+        "Desk research only; no engagement with Ripple.",
+        "Cost estimates are indicative."
+      ],
+      "links": [],
+      "requestLabel": "Request the paper",
+      "requestNote": "The original paper and this portfolio edition are available on request.",
+      "skillNotes": {
+        "regr": "Compared how four jurisdictions classify XRP and what that means for one global product.",
+        "priv": "Designed a layered privacy architecture and later corrected its anonymisation assumption.",
+        "aigov": "Proposed an accountability layer that assigns a duty holder to every AI or validator action.",
+        "teval": "Critiqued AI-generated legal recommendations."
+      },
+      "figures": [
+        {
+          "src": "assets/projects/ripple-regulatory-governance/gtcf-journey.webp",
+          "w": 771,
+          "h": 434,
+          "alt": "Timeline of the Global Token Compliance Framework: months 1–6 framework development, 7–12 pilot testing and refinement, 13–18 integration and deployment, 19–24+ monitoring and ongoing reporting.",
+          "caption": "GTCF implementation journey: four phases over two years.",
+          "insight": "Compliance is built up in stages, from legal mapping to pilots in compliant markets, then integration and continuous monitoring, so XRP can adapt to each regime without fragmenting the ledger."
+        },
+        {
+          "src": "assets/projects/ripple-regulatory-governance/token-classification.webp",
+          "w": 1600,
+          "h": 707,
+          "alt": "Morphological token classification table across four dimensions: technical, token behaviour, inherent value and coordination.",
+          "caption": "Morphological classification used to assess XRP across legal and functional dimensions.",
+          "insight": "Classifying XRP by access rights, behaviour, value and purpose gives Ripple a consistent way to explain its status to each regulator."
+        }
+      ],
+      "skills": [
+        "regr",
+        "priv",
+        "aigov",
+        "teval"
+      ]
+    },
+    {
+      "id": "china-korea-digital-regulation",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "AI, Data & Blockchain Regulation: China–South Korea Comparative Analysis",
+      "short": "China–Korea Digital Regulation",
+      "subtitle": "Comparative legal research · governance",
+      "year": "2025",
+      "categories": [
+        "fintech"
+      ],
+      "role": "Individual research essay",
+      "roleDetail": "LAW2619 Legal Considerations: AI, Big Data & Blockchain (RMIT), Assignment 3, submitted 23 May 2025. Comparative research with a dated portfolio update.",
+      "summary": "A comparison of how China and South Korea regulate AI, data and blockchain, how politics and economics shape enforcement, and which reforms would close each country's gaps.",
+      "finding": {
+        "title": "A trade-off between coverage and cost-effectiveness",
+        "text": "China's regime is broader and more coercive; South Korea reaches GDPR-level safeguards with independent oversight and lower compliance friction. Neither is simply 'more advanced'; each suits a different model of state and market."
+      },
+      "highlights": [
+        {
+          "value": "5 dimensions",
+          "label": "privacy, transfers, automated decisions, blockchain, enforcement"
+        },
+        {
+          "value": "2 reform packages",
+          "label": "an independent Chinese DPC and a Korean DAAA"
+        },
+        {
+          "value": "RMB 8.026bn",
+          "label": "Didi fine (2022), the paper's anchor enforcement case"
+        }
+      ],
+      "star": {
+        "situation": "China and South Korea both regulate AI, data and blockchain heavily, but with very different political structures, enforcement styles and costs for business.",
+        "task": "Compare the two legal frameworks, explain what drives the differences, and propose reforms suited to each country.",
+        "action": "Analysed China's PIPL, DSL and algorithm rules and Korea's PIPA and virtual-asset law, reviewed enforcement cases, and compared political, economic and cultural drivers.",
+        "result": "Recommended an independent Data Protection Commission and tiered compliance for China, and a Data Algorithm Accountability Act for Korea, each with implementation constraints."
+      },
+      "approach": [
+        "Doctrinal analysis of statutes and regulations in both countries",
+        "Enforcement case review (e.g. Didi, Temu, Upbit, Lee Luda)",
+        "Comparison of political, economic and cultural drivers",
+        "Reform design with implementation constraints"
+      ],
+      "figuresTitle": "Comparison, governance and reforms",
+      "tables": [
+        {
+          "title": "Regulatory comparison",
+          "note": "As analysed in the May 2025 paper; checked against the paper, not re-verified for later changes.",
+          "head": [
+            "Topic",
+            "China",
+            "South Korea",
+            "Business implication"
+          ],
+          "rows": [
+            [
+              "Privacy",
+              "PIPL; data treated as a strategic asset; a Beijing court declined to recognise a right to be forgotten (Ren Jiayu v Baidu)",
+              "PIPA: access, rectification, objection and erasure rights; EU adequacy decision in 2021",
+              "Korea's regime sits closer to the GDPR, easing EU data flows"
+            ],
+            [
+              "Cross-border transfers",
+              "Approvals and assessments under PIPL Arts 38–40; security reviews for 'important data'",
+              "Consent or a recognised legal basis; PIPC fined Temu for undisclosed transfers",
+              "China needs clearance before export; Korea needs disclosure and a legal basis"
+            ],
+            [
+              "Automated decisions",
+              "Algorithm rules ban unjustified price discrimination; no right to human review",
+              "Right to object and to request an explanation (PIPA Art. 37-2); gaps for partial automation",
+              "Korean deployments need explanation and objection processes"
+            ],
+            [
+              "Blockchain / virtual assets",
+              "State-backed blockchain infrastructure; crypto trading and ICOs banned",
+              "Real-name accounts and KYC/AML; 2023 Virtual Asset User Protection Act for VASPs",
+              "Virtual-asset businesses are viable in Korea under licensing, not in China"
+            ],
+            [
+              "Enforcement and remedies",
+              "Executive-led through the CAC; limited judicial redress",
+              "Independent PIPC; appealable penalties of up to 3% of revenue",
+              "China: fast, less predictable intervention; Korea: rule-of-law process"
+            ]
+          ]
+        },
+        {
+          "title": "Governance map",
+          "note": "Portfolio adaptation of the paper's analysis.",
+          "head": [
+            "Regulator",
+            "Responsibility",
+            "Affected business process"
+          ],
+          "rows": [
+            [
+              "CAC (China)",
+              "Drafts and enforces PIPL and DSL; algorithm filings and security reviews",
+              "Product launches, data exports, algorithm design"
+            ],
+            [
+              "PIPC (South Korea)",
+              "Independent privacy regulator; fines and remediation orders",
+              "Consent, cross-border transfers, automated decisions"
+            ],
+            [
+              "FSC and FIU (South Korea)",
+              "Virtual-asset supervision, AML/KYC, regulatory sandbox",
+              "Exchange operations, customer onboarding, token pilots"
+            ],
+            [
+              "MSIT (South Korea)",
+              "Lead ministry for the AI Basic Act, in force since 22 January 2026 (portfolio update, not in the original paper)",
+              "Obligations for high-impact and generative AI services"
+            ]
+          ]
+        },
+        {
+          "title": "Reform roadmap",
+          "note": "Recommendations from the paper.",
+          "head": [
+            "Identified gap",
+            "Proposed reform",
+            "Implementation constraint"
+          ],
+          "rows": [
+            [
+              "China: the CAC both drafts and enforces the rules",
+              "An arm's-length Data Protection Commission reporting to the NPC Standing Committee",
+              "Budget autonomy and turf with sectoral bodies (MIIT, PBOC)"
+            ],
+            [
+              "China: one compliance burden for firms of every size",
+              "A tiered-compliance chapter in the PIPL for small processors",
+              "Forum shopping; needs anti-avoidance clauses and random audits"
+            ],
+            [
+              "China: blockchain immutability vs PIPL erasure",
+              "Statutory 'hash-and-hide' erasure certificates",
+              "Criminal-evidence disputes; anonymisation must still be assessed"
+            ],
+            [
+              "China: limited private enforcement",
+              "Public-interest standing for accredited consumer NGOs",
+              "Court congestion; phase in with pilot jurisdictions"
+            ],
+            [
+              "Korea: privacy and AI rules not joined up",
+              "A Data Algorithm Accountability Act with algorithmic impact assessments",
+              "Documentation cost for start-ups; templates and group audits"
+            ],
+            [
+              "Korea: sandbox exists only as policy",
+              "A statutory sandbox charter",
+              "Overlap between PIPC, FSC and FIU; keep EU adequacy"
+            ]
+          ]
+        }
+      ],
+      "triad": {
+        "established": [
+          "China's regime is broader and more coercive; Korea's is rights-based with independent oversight.",
+          "Both are moving toward integrated data-and-algorithm governance."
+        ],
+        "proposed": [
+          "China: an independent DPC, tiered compliance, hash-and-hide erasure and NGO standing.",
+          "Korea: a Data Algorithm Accountability Act and a statutory sandbox."
+        ],
+        "unresolved": [
+          "Whether hash-and-hide erasure satisfies courts and regulators.",
+          "How the Korean reforms interact with the AI Basic Act now in force."
+        ]
+      },
+      "editionDate": "26 Oct 2026",
+      "corrections": [
+        {
+          "issue": "Korean AI law.",
+          "fix": "The paper describes the AI Framework Act as draft or forthcoming (and once as a '2024' Act). For this edition: the AI Basic Act took effect on 22 January 2026; the original wording is kept as historical context.",
+          "source": {
+            "label": "Cooley, Jan 2026",
+            "url": "https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways"
+          }
+        },
+        {
+          "issue": "Precise figures.",
+          "fix": "Several numbers in the paper (e.g. modelled FDI uplift, cost reductions and detection rates) have not been re-verified against retrievable sources, so they are left out of this summary."
+        },
+        {
+          "issue": "'More advanced' framing.",
+          "fix": "The paper's verdict is presented here as a trade-off between coverage and cost-effectiveness rather than a single ranking."
+        }
+      ],
+      "recommendations": [],
+      "measures": [],
+      "contribution": [
+        "Individual research, comparative analysis and recommendations."
+      ],
+      "limitations": [
+        "Desk research; legal positions reflect May 2025 unless noted in the edition notes."
+      ],
+      "links": [],
+      "requestLabel": "Request the paper",
+      "requestNote": "The original essay and this portfolio edition are available on request.",
+      "skillNotes": {
+        "regr": "Compared China's and Korea's AI, data and blockchain regimes across five dimensions.",
+        "priv": "Assessed cross-border transfer and erasure obligations in both countries.",
+        "aigov": "Proposed algorithmic impact assessments and an independent data regulator."
+      },
+      "figures": [],
+      "skills": [
+        "regr",
+        "priv",
+        "aigov"
+      ]
+    },
+
     /* roles / experience */
     {
       id: "rbac", type: "role",
@@ -1141,6 +1904,11 @@ window.PORTFOLIO = {
             { id: "fcfe", name: "FCFE", icon: "cashflow", description: "Free cash flow to equity valuation." },
             { id: "ddm", name: "DDM & WACC", icon: "coins", description: "Two-stage dividend discount model, CAPM cost of equity and WACC." }
           ] },
+        { id: "fintech", name: "Fintech Strategy", icon: "cashflow",
+          description: "Applying technology to financial problems such as lending and payments.",
+          skills: [
+            { id: "tfin", name: "Trade Finance Workflows", icon: "branch", description: "How trade documents, verification and bank risk decisions connect." }
+          ] },
         { id: "inv", name: "Investment Analysis", icon: "candle",
           description: "Building an investment thesis, constructing portfolios and judging the result against a benchmark.",
           skills: [
@@ -1166,7 +1934,18 @@ window.PORTFOLIO = {
         { id: "comm", name: "Stakeholder Communication", icon: "bubbles", proven: true,
           description: "Working with partners, mentors and learners to keep everyone aligned.", skills: [] },
         { id: "coord", name: "Project Coordination", icon: "check", proven: true,
-          description: "Planning, tracking and delivering multi-person projects.", skills: [] },
+          description: "Planning, tracking and delivering multi-person projects.",
+          skills: [
+            { id: "evt", name: "Event Operations", icon: "calendar", description: "Running industry events end to end: programme, speakers, logistics and feedback." }
+          ] },
+        { id: "gov", name: "Technology Governance", icon: "shield",
+          description: "Researching regulation and designing governance for AI, data and blockchain systems.",
+          skills: [
+            { id: "regr", name: "Regulatory Research & Comparison", icon: "doc", description: "Comparing legal frameworks across jurisdictions and what they mean for a business." },
+            { id: "priv", name: "Privacy Risk Assessment", icon: "lock", description: "Checking data flows against deletion, transfer and minimisation rules." },
+            { id: "aigov", name: "AI & Tech Governance Design", icon: "hierarchy", description: "Accountability, audit trails, consortium charters and change control." },
+            { id: "teval", name: "Technology & AI Output Evaluation", icon: "magnify", description: "Testing whether a technology or AI recommendation actually fits the problem." }
+          ] },
         { id: "bpmn", name: "Process Design (BPMN)", icon: "flow",
           description: "Mapping end-to-end business processes, hand-offs and controls in BPMN.", skills: [] },
         { id: "pres", name: "Presentation", icon: "present",
@@ -1182,6 +1961,7 @@ window.PORTFOLIO = {
     { id: "commercial-ba", name: "Commercial / Business Analyst", why: "Segmentation, competitive intelligence and business recommendations", projects: ["vinamilk-green-farm", "loccitane-imc", "fba-hdbank", "ecommerce"] },
     { id: "fpa", name: "FP&A / Commercial Finance", why: "Budgeting, scenario thinking, financial planning and performance measures", projects: ["loccitane-imc", "svc-valuation", "fpt-equity", "vn30-portfolio"] },
     { id: "marketing", name: "Marketing Strategy / Planning", why: "Consumer insights, positioning, journey analysis and IMC planning", projects: ["loccitane-imc", "vinamilk-green-farm"] },
+    { id: "fintech-risk", name: "Fintech / Risk & Compliance", why: "Technology evaluation, regulatory research and governance design", projects: ["blockchain-trade-finance", "ripple-regulatory-governance", "china-korea-digital-regulation", "credit-risk"] },
     { id: "product", name: "Product / Growth Analyst", why: "Customer-benefit mapping, digital concept design and a measurement framework", projects: ["vinamilk-green-farm", "threads-affiliate-agent", "ecommerce"] }
   ],
 

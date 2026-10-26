@@ -148,6 +148,21 @@ icons; `rigorHead: ["Test case", "Expected behaviour"]` turns the rigour table i
 The agent flowchart is generated as an SVG (`assets/projects/threads-affiliate-agent/agent-flow.svg`);
 edit the SVG text directly to rename a step.
 
+### Research, legal and process-redesign projects
+Strategy-layout projects can also use:
+
+```js
+figuresTitle: "Comparison, governance and reforms",   // renames step 03
+tables: [{ title, note, head: ["Topic", "China", "South Korea"], rows: [["Privacy", "…", "…"]] }],
+compare: { title: "Existing vs proposed process",      // tab toggle; figs are indices into figures
+  tabs: [{ label: "Existing process", notes: ["…", "…", "…"], figs: [2, 3] }] },
+triad: { established: ["…"], proposed: ["…"], unresolved: ["…"] },
+editionDate: "26 Oct 2026",
+corrections: [{ issue: "Article 13 attribution.", fix: "…", source: { label, url } }]
+```
+Figures used in `compare` are left out of the normal gallery but still open in the enlarged view.
+Keep the original submission's claims in the record and put later fixes in `corrections`, dated.
+
 ### Recruiter views (Projects page)
 `views` near the bottom of `data.js` lists which projects to show first for each kind of role,
 e.g. `projects.html?view=fpa`. Edit the `projects` arrays to change the order.
