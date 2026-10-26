@@ -740,3 +740,9 @@ a.ev-card:hover { border-color: var(--border-hover); color: var(--text-primary);
   .mtx tbody th { background: var(--card); }
   .mtx td::before { content: attr(data-label); display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
 }
+/* experience */
+.xp-grid { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.role-card .kicker { font-size: 11px; }
+.role-card h3 { margin-top: 8px; line-height: 1.35; }
+.role-card__list { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; line-height: 1.55; color: var(--text-secondary); }
+.role-card__list li::marker { color: var(--accent-gold); }

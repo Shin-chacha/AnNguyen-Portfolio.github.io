@@ -246,6 +246,11 @@
           <p class="t">${TYPE_LABEL[e.type]}</p><p class="n">${esc(e.short || e.title)}</p>
           <p class="s"><span>${meta}</span><span class="go">View project ${icon("arrow_r", 14)}</span></p></a>`;
     }
+    if (e.project) {
+      return `<a class="ev-card" href="project.html?id=${encodeURIComponent(e.project)}">
+          <p class="t">${TYPE_LABEL[e.type]}</p><p class="n">${esc(e.short || e.title)}</p>
+          <p class="s"><span>${meta}</span><span class="go">View project ${icon("arrow_r", 14)}</span></p></a>`;
+    }
     return `<div class="ev-card"><p class="t">${TYPE_LABEL[e.type]}</p><p class="n">${esc(e.short || e.title)}</p><p class="s"><span>${meta}</span></p></div>`;
   }
 
@@ -379,6 +384,18 @@
       </li>`).join("");
   }
 
+  function renderExperience() {
+    const el = $("xp-list"); if (!el) return;
+    const roles = P.evidence.filter((e) => e.type === "role");
+    el.innerHTML = roles.map((r) => `
+      <li class="card role-card">
+        <p class="kicker">${esc([r.subtitle, r.year].filter(Boolean).join(" · "))}</p>
+        <h3>${esc(r.title)}</h3>
+        ${(r.details || []).length ? `<ul class="role-card__list">${r.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
+        ${r.project ? `<a href="project.html?id=${encodeURIComponent(r.project)}">View the project ${icon("arrow_r", 16)}</a>` : ""}
+      </li>`).join("");
+  }
+
   function renderAbout() {
     const pr = P.profile;
     $("about-sub").textContent = `Based in ${pr.location}. ${pr.languages}.`;
@@ -469,6 +486,7 @@
   if (v && cats[v]) { state.view = v; state.collapsed = new Set(P.tree.map((c) => c.id).filter((id) => id !== v)); state.mobileOpen = new Set([v]); }
   renderView();
   renderMap();
+  renderExperience();
   renderMilestones();
   renderAbout();
   bind();

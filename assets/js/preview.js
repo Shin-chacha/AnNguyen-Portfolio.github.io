@@ -136,7 +136,7 @@
       <ol class="steps">
         ${step("01", "The business problem", "Situation · Task", `<p>${esc(star.situation || "")}</p><p>${esc(star.task || "")}</p>`)}
         ${step("02", p.tools ? "Workflow &amp; tools" : "Analytical approach", "Action", `<p>${esc(star.action || "")}</p>${toolsHTML(p)}${asList(p.approach).length ? `${p.tools ? "<h4>Stages</h4>" : ""}${ul(asList(p.approach))}` : ""}`)}
-        ${(F.length || asList(p.tables).length || p.compare) ? step("03", p.tools ? "Agent flowchart" : p.figuresTitle || "Key figures", "", compareHTML(p) + tablesHTML(p) + gallery.map(([f, i]) => `<div class="frow${gallery.length === 1 ? " frow--wide" : ""}">${figureHTML(p, f, i, i === gallery[0][1] ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
+        ${(F.length || asList(p.tables).length || p.compare) ? step("03", p.figuresTitle || (p.tools ? "Agent flowchart" : "Key figures"), "", compareHTML(p) + tablesHTML(p) + gallery.map(([f, i]) => `<div class="frow${gallery.length === 1 ? " frow--wide" : ""}">${figureHTML(p, f, i, i === gallery[0][1] ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
         ${step("04", "Recommendations &amp; measurement", "Result", `<p>${esc(star.result || "")}</p>
             ${asList(p.recommendations).length ? `<h4>Recommendations</h4>${ul(asList(p.recommendations))}` : ""}
             ${asList(p.measures).length ? `<h4>How success would be measured</h4>${ul(asList(p.measures))}` : ""}

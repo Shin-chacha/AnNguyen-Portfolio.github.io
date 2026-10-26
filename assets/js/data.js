@@ -865,14 +865,14 @@ window.PORTFOLIO = {
       "layout": "strategy",
       "title": "Threads Affiliate Operations: Content, Experimentation & AI Agent Workflow",
       "short": "Threads Affiliate AI Agent",
-      "subtitle": "AI-assisted commercial operations · working prototype",
+      "subtitle": "AI-assisted commercial operations · live affiliate account",
       "year": "2026",
       "categories": [
         "ai",
         "commercial"
       ],
-      "role": "Personal project · designed and built",
-      "roleDetail": "My own affiliate account and workflow. I designed the agent, set its evidence and approval rules, and connected the ChatGPT API to Google Drive, Google Docs and Excel. Status: working prototype; pilot results are not yet measured, so no performance or earnings claims are made here.",
+      "role": "Self-employed · designed, built and operated",
+      "roleDetail": "My own affiliate account and workflow. I designed the agent, set its evidence and approval rules, and connected the ChatGPT API to Google Drive, Google Docs and Excel. Earnings: ₫1,109,800 in affiliate commission paid out in three payouts (August–October 2026), taken from the affiliate platform's payment history. Time savings have not been measured yet.",
       "summary": "An AI agent that turns verified product information and past post performance into reviewable drafts, waits for my approval, and proposes the next experiment.",
       "finding": {
         "title": "The agent decides the next step; I decide what gets published",
@@ -880,8 +880,8 @@ window.PORTFOLIO = {
       },
       "highlights": [
         {
-          "value": "1 agent, 5 stages",
-          "label": "research, content, review, analysis and coordination"
+          "value": "₫1.11M commission",
+          "label": "paid out in 3 payouts, Aug–Oct 2026"
         },
         {
           "value": "4 tools",
@@ -896,7 +896,7 @@ window.PORTFOLIO = {
         "situation": "Running an affiliate account on Threads means repeating slow work: checking product details, writing posts, tracking results and deciding what to try next.",
         "task": "Design an AI-assisted workflow that speeds up research and drafting without publishing unverified claims, and that makes each post measurable.",
         "action": "Built one coordinating agent on the ChatGPT API with research, drafting, review and analysis stages. Sources sit in Google Drive, drafts in Google Docs, and records, approvals and logs in Excel.",
-        "result": "A working prototype that drafts with sources, flags missing evidence, requires my approval for each draft, and logs results for the next experiment. Time saved and commercial results will be reported after a measured pilot."
+        "result": "The account earned ₫1,109,800 in affiliate commission across three payouts (August–October 2026), most of it in the first cycle. The workflow drafts with sources, flags missing evidence and requires my approval for each draft; time saved has not been measured yet."
       },
       "tools": [
         {
@@ -979,18 +979,20 @@ window.PORTFOLIO = {
         "Wrote the account voice, evidence rules and publication boundaries the agent follows."
       ],
       "limitations": [
-        "Prototype stage: no pilot results yet, so time savings and earnings are not claimed.",
+        "Commission is reported for the whole account: the platform does not split earnings by whether a post was drafted with the agent.",
+        "Payouts are gross, before ChatGPT API costs, and ₫1,068,544 of the total came in one cycle, so results are not yet steady.",
+        "Time savings against a manual baseline have not been measured yet.",
         "Affiliate orders and commission come from the affiliate platform, not from Threads engagement.",
         "Sequential content tests are exploratory; timing, products and audience changes affect results."
       ],
       "links": [],
       "requestLabel": "Request a walkthrough",
-      "requestNote": "Sanitised logs and a live walkthrough are available on request.",
+      "requestNote": "Sanitised logs, the full payout history and a live walkthrough are available on request.",
       "skillNotes": {
         "aiw": "Designed a single coordinating agent with research, drafting, review and analysis stages.",
         "llm": "Used the ChatGPT API to plan, draft, check claims and analyse results.",
         "hitl": "Required approval of the exact draft and link before publishing, with every decision logged in Excel.",
-        "kpi": "Defined pilot measures from drafting time to approved commission net of costs.",
+        "kpi": "Tracked commission from the platform's payout history and defined measures from drafting time to commission net of costs.",
         "cs": "Turned affiliate operations into a measurable content and experiment loop."
       },
       "figures": [
@@ -1001,8 +1003,17 @@ window.PORTFOLIO = {
           "alt": "Flowchart of the agent loop: goal and account data, coordinator, research, an evidence check, drafting, automated checks, my publication decision (approve, revise or reject), manual publishing, collecting results and evaluating the next experiment. Each step is tagged with the tool it uses: ChatGPT API, Google Drive, Google Docs, Excel, me, or Threads.",
           "caption": "Every step is tagged with the tool it runs on, and nothing reaches Threads without my approval.",
           "insight": "The agent loops back when evidence is missing or a check fails, so it asks rather than invents. Approval, rejection and results are all logged in Excel, which makes each cycle auditable and gives the next experiment a baseline."
+        },
+        {
+          "src": "assets/projects/threads-affiliate-agent/payout-history.webp",
+          "w": 1558,
+          "h": 632,
+          "alt": "Affiliate platform payment history (in Vietnamese) showing a total payout value of 1,109,800 dong and three paid payouts: 1,068,544 dong created 30 July and paid 4 August 2026; 17,409 dong created 20 August and paid 25 August; 23,847 dong created 28 September and paid 1 October. Payment codes are redacted.",
+          "caption": "Payout history: ₫1,109,800 paid in three payouts (payment codes redacted).",
+          "insight": "All three payouts show as paid, and they add up to the dashboard total. Most of it, ₫1,068,544, came in the first cycle; August and September paid ₫17,409 and ₫23,847. That drop is the next thing the experiment log has to explain, rather than a steady monthly income."
         }
       ],
+      "figuresTitle": "Agent flowchart & payout evidence",
       "skills": [
         "aiw",
         "llm",
@@ -1775,6 +1786,19 @@ window.PORTFOLIO = {
     },
 
     /* roles / experience */
+    {
+      id: "threads-affiliate-ops", type: "role",
+      title: "Affiliate Content Operator · Threads",
+      short: "Threads affiliate account",
+      subtitle: "Self-employed", year: "2026",
+      project: "threads-affiliate-agent",
+      details: [
+        "Run my own affiliate account on Threads, with an AI agent workflow I built on the ChatGPT API, Google Drive, Google Docs and Excel.",
+        "Earned ₫1,109,800 in affiliate commission across three payouts (August–October 2026), per the platform's payment history.",
+        "Approve every draft and link before it is published, and log results to plan the next content experiment."
+      ],
+      skills: ["aiw", "llm", "hitl", "kpi", "cs"]
+    },
     {
       id: "rbac", type: "role",
       title: "Case Team Leader · RMIT Business Analytics Champion",

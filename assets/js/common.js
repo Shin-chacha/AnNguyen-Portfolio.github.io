@@ -141,6 +141,7 @@
     const links = [
       { id: "skills", label: "Skills", href: "index.html#map" },
       { id: "projects", label: "Projects", href: "projects.html" },
+      { id: "experience", label: "Experience", href: "index.html#experience" },
       { id: "milestones", label: "Milestones", href: "index.html#milestones" },
       { id: "about", label: "About", href: "index.html#about" }
     ];

@@ -3,7 +3,7 @@
 A capability-map portfolio: every skill on the map is backed by evidence (projects, roles, competitions, certifications, coursework). Plain HTML, CSS and JavaScript, with no build step, framework or dependencies, so it runs directly on **GitHub Pages**.
 
 ```
-index.html           Home: hero, capability map, milestones, about
+index.html           Home: hero, capability map, experience, milestones, about
 projects.html        All projects, with search + category and skill filters
 project.html         One project's case study (project.html?id=credit-risk)
 404.html             Not-found page for GitHub Pages
@@ -175,6 +175,9 @@ Add `emerging: [{ name, note }]` to a capability to mention a skill in its drawe
 { id: "cert-pl300", type: "certification", title: "Power BI Data Analyst (PL-300)", subtitle: "Microsoft", year: "2027", skills: ["pbi"] },
 ```
 `type` can be `project`, `role`, `competition`, `award`, `certification` or `course`.
+
+Roles appear in the **Experience** section on the home page, with their `details` as bullets.
+Add `project: "<project id>"` to a role to link it to that project from the Experience card and the skill drawer.
 
 ### How a skill's status is decided (automatically)
 
