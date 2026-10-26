@@ -141,6 +141,13 @@ figures: [{ src, w, h, alt, caption, insight: "Business interpretation shown bes
 
 If `links` is empty, the preview shows **Request the full report** (an email link) instead of a broken button.
 
+### Workflow / AI projects
+Add `tools: [{ key: "api" | "drive" | "docs" | "excel", name, use }]` to show a "Tools used" list with
+icons; `rigorHead: ["Test case", "Expected behaviour"]` turns the rigour table into acceptance tests;
+`requestLabel` / `requestNote` change the fallback button when there is no public link.
+The agent flowchart is generated as an SVG (`assets/projects/threads-affiliate-agent/agent-flow.svg`);
+edit the SVG text directly to rename a step.
+
 ### Recruiter views (Projects page)
 `views` near the bottom of `data.js` lists which projects to show first for each kind of role,
 e.g. `projects.html?view=fpa`. Edit the `projects` arrays to change the order.

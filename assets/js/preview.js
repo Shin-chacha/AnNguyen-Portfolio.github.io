@@ -54,13 +54,24 @@
       </figure>`;
   }
 
+  const TOOL = {
+    api: ["#A78BFA", "M8 1.5 L13.6 4.75 V11.25 L8 14.5 L2.4 11.25 V4.75 Z M8 5.2 L10.6 6.7 V9.3 L8 10.8 L5.4 9.3 V6.7 Z"],
+    drive: ["#6FC3DF", "M1.5 4.5 H6 L7.5 6 H14.5 V13 H1.5 Z"],
+    docs: ["#87A7D7", "M3.5 1.5 H10 L12.5 4 V14.5 H3.5 Z M10 1.5 V4 H12.5 M5.5 7.5 H10.5 M5.5 10 H10.5 M5.5 12.2 H9"],
+    excel: ["#7FD18B", "M2 2.5 H14 V13.5 H2 Z M2 6.2 H14 M2 9.8 H14 M6 2.5 V13.5 M10 2.5 V13.5"]
+  };
+  const toolsHTML = (p) => asList(p.tools).length ? `<h4>Tools used</h4><ul class="tools">${p.tools.map((t) => {
+    const [c, d] = TOOL[t.key] || ["#B7BDC8", ""];
+    return `<li><span class="tools__i" style="--tc:${c}" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 16 16"><path d="${d}"/></svg></span><span><strong>${esc(t.name)}</strong><span>${esc(t.use)}</span></span></li>`;
+  }).join("")}</ul>` : "";
+
   function ctaHTML(p, opts) {
     const links = asList(p.links);
     if (!links.length) {
       const mail = `mailto:${P.profile.email}?subject=${encodeURIComponent("Request: " + (p.short || p.title))}`;
       return `<div class="pv__cta">${opts.caseLink ? `<a class="btn btn--ghost" href="project.html?id=${encodeURIComponent(p.id)}">Full case study ${icon("arrow_r", 14)}</a>` : ""}
-          <a class="btn btn--ghost" href="${esc(mail)}">${icon("mail", 14)} Request the full report</a></div>
-        <p class="pv__note">The full report is not published online yet; a copy is available on request.</p>`;
+          <a class="btn btn--ghost" href="${esc(mail)}">${icon("mail", 14)} ${esc(p.requestLabel || "Request the full report")}</a></div>
+        <p class="pv__note">${esc(p.requestNote || "The full report is not published online yet; a copy is available on request.")}</p>`;
     }
     return `<div class="pv__cta">
         <a class="btn btn--primary" href="${esc(links[0].url)}" target="_blank" rel="noopener">View full analysis ${icon("ext", 14)}</a>
@@ -85,14 +96,14 @@
       ${hl.length ? `<ul class="hl" aria-label="Key points">${hl.map((h) => `<li><strong>${esc(h.value)}</strong><span>${esc(h.label)}</span></li>`).join("")}</ul>` : ""}
       <ol class="steps">
         ${step("01", "The business problem", "Situation · Task", `<p>${esc(star.situation || "")}</p><p>${esc(star.task || "")}</p>`)}
-        ${step("02", "Analytical approach", "Action", `<p>${esc(star.action || "")}</p>${ul(asList(p.approach))}`)}
-        ${F.length ? step("03", "Key figures", "", F.map((f, i) => `<div class="frow">${figureHTML(p, f, i, i === 0 ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
+        ${step("02", p.tools ? "Workflow &amp; tools" : "Analytical approach", "Action", `<p>${esc(star.action || "")}</p>${toolsHTML(p)}${asList(p.approach).length ? `${p.tools ? "<h4>Stages</h4>" : ""}${ul(asList(p.approach))}` : ""}`)}
+        ${F.length ? step("03", p.tools ? "Agent flowchart" : "Key figures", "", F.map((f, i) => `<div class="frow${F.length === 1 ? " frow--wide" : ""}">${figureHTML(p, f, i, i === 0 ? "fig--hero" : "", true)}<div class="frow__txt"><h4>${esc(f.caption)}</h4>${f.insight ? `<p>${esc(f.insight)}</p>` : ""}</div></div>`).join("")) : ""}
         ${step("04", "Recommendations &amp; measurement", "Result", `<p>${esc(star.result || "")}</p>
             ${asList(p.recommendations).length ? `<h4>Recommendations</h4>${ul(asList(p.recommendations))}` : ""}
             ${asList(p.measures).length ? `<h4>How success would be measured</h4>${ul(asList(p.measures))}` : ""}
-            ${rigor.length ? `<h4>Analytical rigour: what the data can and cannot prove</h4>
-              <div class="rigor" role="table" aria-label="Supported findings and their limitations">
-                <div class="rigor__row rigor__head" role="row"><span role="columnheader">Supported finding</span><span role="columnheader">Important limitation</span></div>
+            ${rigor.length ? `<h4>${p.rigorHead ? "Acceptance tests" : "Analytical rigour: what the data can and cannot prove"}</h4>
+              <div class="rigor" role="table" aria-label="${p.rigorHead ? "Test cases and expected behaviour" : "Supported findings and their limitations"}">
+                <div class="rigor__row rigor__head" role="row"><span role="columnheader">${esc((p.rigorHead || [])[0] || "Supported finding")}</span><span role="columnheader">${esc((p.rigorHead || [])[1] || "Important limitation")}</span></div>
                 ${rigor.map(([a, b]) => `<div class="rigor__row" role="row"><span role="cell">${esc(a)}</span><span role="cell">${esc(b)}</span></div>`).join("")}
               </div>` : ""}
             ${asList(p.limitations).length ? `<h4>Assumptions and limitations</h4>${ul(asList(p.limitations))}` : ""}`)}

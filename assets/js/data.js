@@ -52,7 +52,8 @@ window.PORTFOLIO = {
     { id: "analytics", name: "Data Analytics" },
     { id: "ml", name: "Machine Learning" },
     { id: "business", name: "Business" },
-    { id: "commercial", name: "Commercial Strategy" }
+    { id: "commercial", name: "Commercial Strategy" },
+    { id: "ai", name: "AI & Automation" }
   ],
 
   /* ------------------------------------------------------------ evidence
@@ -855,6 +856,161 @@ window.PORTFOLIO = {
       ]
     },
 
+    {
+      "id": "threads-affiliate-agent",
+      "type": "project",
+      "featured": true,
+      "layout": "strategy",
+      "title": "Threads Affiliate Operations: Content, Experimentation & AI Agent Workflow",
+      "short": "Threads Affiliate AI Agent",
+      "subtitle": "AI-assisted commercial operations · working prototype",
+      "year": "2026",
+      "categories": [
+        "ai",
+        "commercial"
+      ],
+      "role": "Personal project · designed and built",
+      "roleDetail": "My own affiliate account and workflow. I designed the agent, set its evidence and approval rules, and connected the ChatGPT API to Google Drive, Google Docs and Excel. Status: working prototype; pilot results are not yet measured, so no performance or earnings claims are made here.",
+      "summary": "An AI agent that turns verified product information and past post performance into reviewable drafts, waits for my approval, and proposes the next experiment.",
+      "finding": {
+        "title": "The agent decides the next step; I decide what gets published",
+        "text": "Unlike a fixed automation, the agent checks what evidence it has and chooses what to do next: research more, ask for missing information, draft or stop. Nothing is published without my approval of the exact draft and link."
+      },
+      "highlights": [
+        {
+          "value": "1 agent, 5 stages",
+          "label": "research, content, review, analysis and coordination"
+        },
+        {
+          "value": "4 tools",
+          "label": "ChatGPT API, Google Drive, Google Docs, Excel"
+        },
+        {
+          "value": "Human approval",
+          "label": "required before anything is published"
+        }
+      ],
+      "star": {
+        "situation": "Running an affiliate account on Threads means repeating slow work: checking product details, writing posts, tracking results and deciding what to try next.",
+        "task": "Design an AI-assisted workflow that speeds up research and drafting without publishing unverified claims, and that makes each post measurable.",
+        "action": "Built one coordinating agent on the ChatGPT API with research, drafting, review and analysis stages. Sources sit in Google Drive, drafts in Google Docs, and records, approvals and logs in Excel.",
+        "result": "A working prototype that drafts with sources, flags missing evidence, requires my approval for each draft, and logs results for the next experiment. Time saved and commercial results will be reported after a measured pilot."
+      },
+      "tools": [
+        {
+          "key": "api",
+          "name": "ChatGPT API",
+          "use": "Runs the agent: plans the next step, researches, drafts, checks claims and analyses results."
+        },
+        {
+          "key": "drive",
+          "name": "Google Drive",
+          "use": "Stores product sources, screenshots and run outputs."
+        },
+        {
+          "key": "docs",
+          "name": "Google Docs",
+          "use": "Holds each draft with its sources, audience and CTA for review."
+        },
+        {
+          "key": "excel",
+          "name": "Excel",
+          "use": "Product catalogue, post history, performance, approval log and experiments."
+        }
+      ],
+      "approach": [
+        "Research: shortlist approved products, with sources and reasons",
+        "Content: drafts with the intended audience, claim sources and CTA",
+        "Review: checks factual claims, links, repetition and affiliate disclosure (pass or revise)",
+        "Performance analysis: reads post and affiliate results and proposes the next experiment",
+        "Coordinator: chooses the next stage or tool and keeps a full activity log"
+      ],
+      "recommendations": [
+        "Keep publishing manual until the draft workflow is proven; add Threads API publishing later.",
+        "Bind each approval to the exact draft version and link, so any edit needs a new approval.",
+        "Treat missing metrics as missing, not zero: missing clicks are not zero clicks."
+      ],
+      "measures": [
+        "Research and drafting time against a manual baseline",
+        "Unsupported claims caught during review",
+        "Draft acceptance rate",
+        "Views, interactions and tracked outbound clicks",
+        "Approved affiliate orders and commission, net of direct operating costs"
+      ],
+      "rigorHead": [
+        "Test case",
+        "Expected behaviour"
+      ],
+      "rigor": [
+        [
+          "Product has no verified price",
+          "Omit the price or ask for verification"
+        ],
+        [
+          "A source contradicts the draft",
+          "Flag the contradiction"
+        ],
+        [
+          "Product information has expired",
+          "Ask for a refresh"
+        ],
+        [
+          "An approved draft is edited",
+          "Require a new approval"
+        ],
+        [
+          "The same publish request is repeated",
+          "Prevent a duplicate post"
+        ],
+        [
+          "Affiliate results are unavailable",
+          "Report the measurement gap"
+        ],
+        [
+          "A post performs poorly",
+          "Propose a testable explanation, not an invented cause"
+        ]
+      ],
+      "contribution": [
+        "Designed the stages, decision points and approval rules.",
+        "Connected the ChatGPT API to Google Drive, Google Docs and Excel.",
+        "Wrote the account voice, evidence rules and publication boundaries the agent follows."
+      ],
+      "limitations": [
+        "Prototype stage: no pilot results yet, so time savings and earnings are not claimed.",
+        "Affiliate orders and commission come from the affiliate platform, not from Threads engagement.",
+        "Sequential content tests are exploratory; timing, products and audience changes affect results."
+      ],
+      "links": [],
+      "requestLabel": "Request a walkthrough",
+      "requestNote": "Sanitised logs and a live walkthrough are available on request.",
+      "skillNotes": {
+        "aiw": "Designed a single coordinating agent with research, drafting, review and analysis stages.",
+        "llm": "Used the ChatGPT API to plan, draft, check claims and analyse results.",
+        "hitl": "Required approval of the exact draft and link before publishing, with every decision logged in Excel.",
+        "kpi": "Defined pilot measures from drafting time to approved commission net of costs.",
+        "cs": "Turned affiliate operations into a measurable content and experiment loop."
+      },
+      "figures": [
+        {
+          "src": "assets/projects/threads-affiliate-agent/agent-flow.svg",
+          "w": 1680,
+          "h": 1050,
+          "alt": "Flowchart of the agent loop: goal and account data, coordinator, research, an evidence check, drafting, automated checks, my publication decision (approve, revise or reject), manual publishing, collecting results and evaluating the next experiment. Each step is tagged with the tool it uses: ChatGPT API, Google Drive, Google Docs, Excel, me, or Threads.",
+          "caption": "Every step is tagged with the tool it runs on, and nothing reaches Threads without my approval.",
+          "insight": "The agent loops back when evidence is missing or a check fails, so it asks rather than invents. Approval, rejection and results are all logged in Excel, which makes each cycle auditable and gives the next experiment a baseline."
+        }
+      ],
+      "skills": [
+        "aiw",
+        "llm",
+        "hitl",
+        "kpi",
+        "cs",
+        "ps"
+      ]
+    },
+
     /* roles / experience */
     {
       id: "rbac", type: "role",
@@ -952,6 +1108,12 @@ window.PORTFOLIO = {
             { id: "reg", name: "Regression", icon: "fit", description: "Predicting continuous values such as delivery time." },
             { id: "eval", name: "Model Evaluation", icon: "gauge", description: "Calibration, error metrics, leakage checks and fairness." }
           ] },
+        { id: "aiw", name: "AI Workflow Design", icon: "network",
+          description: "Designing AI agents with clear stages, tools, evidence rules and human approval.",
+          skills: [
+            { id: "llm", name: "LLM APIs (ChatGPT)", icon: "code", description: "Calling the ChatGPT API to plan, draft, check and analyse within a workflow." },
+            { id: "hitl", name: "Human-in-the-loop & Approvals", icon: "check", description: "Approval gates, audit logs and rules that stop unverified output from going live." }
+          ] },
         { id: "xai", name: "Explainability", icon: "eye",
           description: "Making model decisions understandable to non-technical stakeholders.",
           skills: [
@@ -1020,7 +1182,7 @@ window.PORTFOLIO = {
     { id: "commercial-ba", name: "Commercial / Business Analyst", why: "Segmentation, competitive intelligence and business recommendations", projects: ["vinamilk-green-farm", "loccitane-imc", "fba-hdbank", "ecommerce"] },
     { id: "fpa", name: "FP&A / Commercial Finance", why: "Budgeting, scenario thinking, financial planning and performance measures", projects: ["loccitane-imc", "svc-valuation", "fpt-equity", "vn30-portfolio"] },
     { id: "marketing", name: "Marketing Strategy / Planning", why: "Consumer insights, positioning, journey analysis and IMC planning", projects: ["loccitane-imc", "vinamilk-green-farm"] },
-    { id: "product", name: "Product / Growth Analyst", why: "Customer-benefit mapping, digital concept design and a measurement framework", projects: ["vinamilk-green-farm", "ecommerce"] }
+    { id: "product", name: "Product / Growth Analyst", why: "Customer-benefit mapping, digital concept design and a measurement framework", projects: ["vinamilk-green-farm", "threads-affiliate-agent", "ecommerce"] }
   ],
 
   /* ----------------------------------------------------------- milestones
